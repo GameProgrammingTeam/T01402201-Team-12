@@ -33,6 +33,7 @@ public class SlimeMovement : MonoBehaviour
 
         if (move.x != 0 | move.y != 0)
         {
+            animator.speed = 1.0f;
             if (move.x != 0)
             {
                 renderer.flipX = move.x < 0;
@@ -44,6 +45,7 @@ public class SlimeMovement : MonoBehaviour
         }
         else
         {
+            animator.speed = 0.5f;
             animator.SetBool("isMoving", false);
         }
     }
