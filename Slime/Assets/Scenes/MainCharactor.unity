@@ -176,7 +176,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 499574157809568748, guid: 78244b793f2094fb4b7716375f2557d9, type: 3}
       propertyPath: slime
-      value: 7
+      value: 35
       objectReference: {fileID: 0}
     - target: {fileID: 499574157809568749, guid: 78244b793f2094fb4b7716375f2557d9, type: 3}
       propertyPath: m_Name
