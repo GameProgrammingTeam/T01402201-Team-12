@@ -15,8 +15,8 @@ GameObject:
   - component: {fileID: 499574157809568727}
   - component: {fileID: 8753354111813944138}
   m_Layer: 0
-  m_Name: MainSlime
-  m_TagString: Player
+  m_Name: Slime
+  m_TagString: Slime
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -128,8 +128,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slime: 0
   moveSpeed: 10
-  health: 0
-  damage: 0
+  health: 1000
+  damage: 50
 --- !u!114 &499574157809568727
 MonoBehaviour:
   m_ObjectHideFlags: 0
