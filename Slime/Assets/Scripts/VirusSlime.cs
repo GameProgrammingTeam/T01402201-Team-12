@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -30,5 +31,18 @@ public class VirusSlime : MonoBehaviour
         Vector2 playerPosition = player.transform.position;
         Vector2 move = (playerPosition - currentPosition).normalized * moveSpeed;
         movement.MoveTo(currentPosition, move);
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Attack"))
+        {
+            float damage = other.gameObject.GetComponent<Attack>().damage;
+            health -= damage;
+            if (health <= 0) {
+                Destroy(gameObject);
+            }
+            Destroy(other.gameObject);
+        }
     }
 }
