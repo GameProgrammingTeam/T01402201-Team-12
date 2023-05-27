@@ -8,9 +8,8 @@ public class Slime : MonoBehaviour
     [SerializeField] private float moveSpeed;
     [SerializeField] private float health;
     [SerializeField] private float damage;
-
     private SlimeMovement movement;
-
+    private Attacker attacker;
 
     // Start is called before the first frame update
     void Start()
@@ -18,7 +17,7 @@ public class Slime : MonoBehaviour
         movement = GetComponent<SlimeMovement>();
         var resource = "SlimeAnimation/SlimeAnimationOverrideController/" + slime;
         Animator animator = GetComponent<Animator>();
-        animator.runtimeAnimatorController = (RuntimeAnimatorController) Resources.Load(resource);
+        animator.runtimeAnimatorController = (RuntimeAnimatorController)Resources.Load(resource);
     }
 
     // Update is called once per frame

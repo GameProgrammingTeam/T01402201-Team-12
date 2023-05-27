@@ -44,4 +44,13 @@ public class Attacker : MonoBehaviour
         Attack attack = Instantiate(attackPrefeb, attackPosition, rotation);
         attack.SetField(attackPosition, attackDirection, damage, speed, range);
     }
+
+    void SetField(float attackSpeed, float damage, float speed, float range, Attack attackPrefeb)
+    {
+        this.attackSpeed = attackSpeed;
+        this.damage = damage;
+        this.speed = speed;
+        this.range = range;
+        this.attackPrefeb = attackPrefeb;
+    }
 }

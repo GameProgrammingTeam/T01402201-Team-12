@@ -9,9 +9,10 @@ public class VirusSlime : MonoBehaviour
     [SerializeField] private float moveSpeed;
     [SerializeField] private float health;
     [SerializeField] private float damage;
+    [SerializeField] public float attackSpeed;
+    [SerializeField] public float range;
     private GameObject player;
     private SlimeMovement movement;
-
 
     // Start is called before the first frame update
     void Start()
@@ -44,5 +45,10 @@ public class VirusSlime : MonoBehaviour
             }
             Destroy(other.gameObject);
         }
+    }
+
+    public void SetField()
+    {
+        
     }
 }
