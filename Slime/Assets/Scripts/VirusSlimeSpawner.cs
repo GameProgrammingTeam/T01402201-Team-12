@@ -21,9 +21,15 @@ public class VirusSlimeSpawner : MonoBehaviour
     }
 
     [SerializeField] private float spawnTime;
-    [SerializeField] private float spawnMaxCount;
+    [SerializeField] private int spawnMaxCount;
     [SerializeField] private SlimeProbability[] probabilities;
     [SerializeField] private VirusSlime virusSlimePrefab;
+
+    [SerializeField] private float moveSpeed;
+    [SerializeField] private float health;
+    [SerializeField] private float damage;
+    [SerializeField] public float attackSpeed;
+    [SerializeField] public float range;
 
     private float currentTime = 0.0f;
 
@@ -55,6 +61,15 @@ public class VirusSlimeSpawner : MonoBehaviour
         }
     }
 
+    void Spawn()
+    {
+        for (int i = 0; i < Random.Range(0, spawnMaxCount + 1); i++)
+        {
+            SlimeSet slime = Catch().slime;
+            CreateVirusSlime(slime);
+        }
+    }
+
     SlimeProbability Catch()
     {
         float prev = 0.0f;
@@ -71,15 +86,6 @@ public class VirusSlimeSpawner : MonoBehaviour
         return probabilities[0];
     }
 
-    void Spawn()
-    {
-        for (int i = 0; i < (int)Random.Range(0, spawnMaxCount); i++)
-        {
-            SlimeSet slime = Catch().slime;
-            CreateVirusSlime(slime);
-        }
-    }
-
     void CreateVirusSlime(SlimeSet slimeSet)
     {
         Vector2 currentPosition = transform.position;
@@ -91,6 +97,6 @@ public class VirusSlimeSpawner : MonoBehaviour
         Vector3 slimePosition = new Vector3(currentPosition.x, currentPosition.y, 0) + randomPosition;
         Quaternion rotation = Quaternion.Euler(Vector3.zero);
         VirusSlime virusSlime = Instantiate(virusSlimePrefab, slimePosition, rotation);
-        virusSlime.SetField();
+        virusSlime.SetField(slimeSet, moveSpeed, health, damage, attackSpeed, range);
     }
 }

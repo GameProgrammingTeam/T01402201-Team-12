@@ -6,6 +6,9 @@ TagManager:
   tags:
   - VirusSlime
   - Slime
+  - Attack
+  - Attacker
+  - VirusSlimeSpawner
   layers:
   - Default
   - TransparentFX

@@ -27,7 +27,6 @@ public class VirusSlime : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       
         Vector2 currentPosition = transform.position;
         Vector2 playerPosition = player.transform.position;
         Vector2 move = (playerPosition - currentPosition).normalized * moveSpeed;
@@ -40,15 +39,22 @@ public class VirusSlime : MonoBehaviour
         {
             float damage = other.gameObject.GetComponent<Attack>().damage;
             health -= damage;
-            if (health <= 0) {
+            if (health <= 0)
+            {
                 Destroy(gameObject);
             }
+
             Destroy(other.gameObject);
         }
     }
 
-    public void SetField()
+    public void SetField(SlimeSet slime, float moveSpeed, float health, float damage, float attackSpeed, float range)
     {
-        
+        this.slime = slime;
+        this.moveSpeed = moveSpeed;
+        this.health = health;
+        this.damage = damage;
+        this.attackSpeed = attackSpeed;
+        this.range = range;
     }
 }
