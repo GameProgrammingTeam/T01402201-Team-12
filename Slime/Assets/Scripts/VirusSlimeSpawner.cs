@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UIElements;
 using Random = UnityEngine.Random;
 
 public class VirusSlimeSpawner : MonoBehaviour
@@ -24,6 +25,9 @@ public class VirusSlimeSpawner : MonoBehaviour
     [SerializeField] private int spawnMaxCount;
     [SerializeField] private SlimeProbability[] probabilities;
     [SerializeField] private VirusSlime virusSlimePrefab;
+
+    [SerializeField] private GameObject positionObject;
+    [SerializeField] private float position;
 
     [SerializeField] private float moveSpeed;
     [SerializeField] private float health;

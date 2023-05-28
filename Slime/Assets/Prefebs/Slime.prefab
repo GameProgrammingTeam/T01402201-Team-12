@@ -149,9 +149,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slime: 0
+  attackerPrefab: {fileID: 3883073863883782132, guid: dca09aecdeaa24104b376be932ffcc0b, type: 3}
+  attackPrefab: {fileID: 7071995795188218340, guid: 0c69bd71980a642c29dc893b56a20c60, type: 3}
   moveSpeed: 10
   health: 1000
+  attackSpeed: 5
   damage: 50
+  speed: 10
+  range: 30
 --- !u!114 &499574157809568727
 MonoBehaviour:
   m_ObjectHideFlags: 0

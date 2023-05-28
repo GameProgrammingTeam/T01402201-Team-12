@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.UI;
 using UnityEngine;
 
 public class Attacker : MonoBehaviour
@@ -11,6 +10,7 @@ public class Attacker : MonoBehaviour
     [SerializeField] public float range;
     [SerializeField] public Attack attackPrefeb;
 
+    private Slime parent;
     private Camera camera;
 
 
@@ -25,6 +25,13 @@ public class Attacker : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!object.ReferenceEquals(parent, null))
+        {
+            attackSpeed = parent.attackSpeed;
+            damage = parent.damage;
+            speed = parent.speed;
+            range = parent.range;
+        }
         currentTime += Time.deltaTime;
         if (currentTime > (1 / attackSpeed))
         {
@@ -45,12 +52,11 @@ public class Attacker : MonoBehaviour
         attack.SetField(attackPosition, attackDirection, damage, speed, range);
     }
 
-    void SetField(float attackSpeed, float damage, float speed, float range, Attack attackPrefeb)
+    public void SetField(Slime parent,
+        Attack attackPrefeb)
     {
-        this.attackSpeed = attackSpeed;
-        this.damage = damage;
-        this.speed = speed;
-        this.range = range;
+        this.parent = parent;
+        transform.SetParent(parent.transform, false);
         this.attackPrefeb = attackPrefeb;
     }
 }
