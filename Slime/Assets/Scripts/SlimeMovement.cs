@@ -12,17 +12,13 @@ public class SlimeMovement : MonoBehaviour
     private float period = 0.25f;
 
 
-    // Use this for initialization
     void Start()
     {
         renderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
     }
 
-    void Update()
-    {
-    }
-
+    // 슬라임 움직임
     public void MoveTo(Vector2 currentPosition, Vector2 move)
     {
         currentTime += Time.deltaTime;

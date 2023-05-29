@@ -1,37 +1,27 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Attacker : MonoBehaviour
 {
+    [SerializeField] public Attack attackPrefeb;
     [SerializeField] public float attackSpeed;
     [SerializeField] public float damage;
     [SerializeField] public float speed;
     [SerializeField] public float range;
-    [SerializeField] public Attack attackPrefeb;
-
-    private Slime parent;
+    
+    private Slime slime;
     private Camera camera;
 
-
-    // Start is called before the first frame update
-    private float currentTime = 0.0f;
+    private float currentTime;
 
     void Start()
     {
         camera = Camera.main;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (!object.ReferenceEquals(parent, null))
-        {
-            attackSpeed = parent.attackSpeed;
-            damage = parent.damage;
-            speed = parent.speed;
-            range = parent.range;
-        }
+        SetValues();
+
         currentTime += Time.deltaTime;
         if (currentTime > (1 / attackSpeed))
         {
@@ -52,11 +42,23 @@ public class Attacker : MonoBehaviour
         attack.SetField(attackPosition, attackDirection, damage, speed, range);
     }
 
-    public void SetField(GameObject parent,
-        Attack attackPrefeb)
+    // slime의 값 변경시 적용
+    void SetValues()
     {
-        this.parent = parent.GetComponent<Slime>();
-        transform.SetParent(parent.transform, false);
-        this.attackPrefeb = attackPrefeb;
+        if (!ReferenceEquals(slime, null))
+        {
+            attackPrefeb = slime.attackPrefab;
+            attackSpeed = slime.attackSpeed;
+            damage = slime.damage;
+            speed = slime.speed;
+            range = slime.range;
+        }
+    }
+
+    // slime 연결
+    public void SetSlime(GameObject slimeObject)
+    {
+        slime = slimeObject.GetComponent<Slime>();
+        transform.SetParent(slimeObject.transform, false);
     }
 }

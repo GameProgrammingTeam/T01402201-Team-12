@@ -217,6 +217,7 @@ GameObject:
   m_Component:
   - component: {fileID: 423297609}
   - component: {fileID: 423297608}
+  - component: {fileID: 423297610}
   m_Layer: 0
   m_Name: Map
   m_TagString: Untagged
@@ -294,6 +295,27 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &423297610
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 423297607}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e70c2351dfd74c5cbc7349074784df9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slime: 0
+  slimeAttackerPrefab: {fileID: 3883073863883782132, guid: dca09aecdeaa24104b376be932ffcc0b, type: 3}
+  slimeAttackPrefab: {fileID: 7071995795188218340, guid: 0c69bd71980a642c29dc893b56a20c60, type: 3}
+  slimeMoveSpeed: 10
+  slimeHealth: 5
+  slimeAttackSpeed: 5
+  slimeDamage: 0
+  slimeSpeed: 0
+  slimeRange: 0
 --- !u!4 &523655856 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5986182461375802233, guid: 693a0eb18c3ea4565ac813133b120e16, type: 3}
@@ -398,6 +420,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9161fccc6e7eb4fd39bf520e3560cf55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  virusSlimeSpawnerPrefab: {fileID: 0}
 --- !u!4 &1006571378 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5986182461375802233, guid: 693a0eb18c3ea4565ac813133b120e16, type: 3}
@@ -511,6 +534,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 499574157809568748, guid: 78244b793f2094fb4b7716375f2557d9, type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 423297610}
     - target: {fileID: 499574157809568749, guid: 78244b793f2094fb4b7716375f2557d9, type: 3}
       propertyPath: m_Name
       value: Slime

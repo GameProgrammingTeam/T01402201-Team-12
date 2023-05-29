@@ -1,26 +1,8 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
-using UnityEngine.UIElements;
 using Random = UnityEngine.Random;
 
 public class VirusSlimeSpawner : MonoBehaviour
 {
-    [Serializable]
-    public struct SlimeProbability
-    {
-        public SlimeProbability(SlimeSet slime, float probability)
-        {
-            this.slime = slime;
-            this.probability = probability;
-        }
-
-        public SlimeSet slime;
-        public float probability;
-    }
-
     [SerializeField] private float spawnTime;
     [SerializeField] private int spawnMaxCount;
     [SerializeField] private SlimeProbability[] probabilities;

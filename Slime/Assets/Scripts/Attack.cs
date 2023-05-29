@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Attack : MonoBehaviour
@@ -9,13 +7,7 @@ public class Attack : MonoBehaviour
     [SerializeField] public Vector2 direction;
     [SerializeField] public float speed;
     [SerializeField] public float range;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-    }
-
-    // Update is called once per frame
+    
     void Update()
     {
         Vector2 move = direction * speed;
