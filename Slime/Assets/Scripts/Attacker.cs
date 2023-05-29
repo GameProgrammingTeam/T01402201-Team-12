@@ -52,10 +52,10 @@ public class Attacker : MonoBehaviour
         attack.SetField(attackPosition, attackDirection, damage, speed, range);
     }
 
-    public void SetField(Slime parent,
+    public void SetField(GameObject parent,
         Attack attackPrefeb)
     {
-        this.parent = parent;
+        this.parent = parent.GetComponent<Slime>();
         transform.SetParent(parent.transform, false);
         this.attackPrefeb = attackPrefeb;
     }

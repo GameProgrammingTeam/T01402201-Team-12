@@ -41,6 +41,6 @@ public class Slime : MonoBehaviour
     void CreateAttacker()
     {
         attacker = Instantiate(attackerPrefab);
-        attacker.SetField(gameObject.GetComponent<Slime>(), attackPrefab);
+        attacker.SetField(gameObject, attackPrefab);
     }
 }
