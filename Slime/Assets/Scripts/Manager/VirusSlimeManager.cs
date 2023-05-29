@@ -21,7 +21,6 @@ public class VirusSlimeManager : MonoBehaviour
     private void Start()
     {
         _camera = Camera.main;
-        
         float spawnerHalfWidth = virusSlimeSpawnerPrefab.transform.lossyScale.x / 2;
         float halfWidth = _camera.orthographicSize * _camera.aspect;
         Vector3 position = new Vector3(halfWidth + spawnerHalfWidth + weight, 0, 0);

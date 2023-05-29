@@ -14,14 +14,21 @@ public class SlimeManager : MonoBehaviour
     [SerializeField] public float range;
     [SerializeField] public float jellyCount;
 
+    private GameManager _gameManager;
     private GameObject _slimeObject;
 
     private void Start()
     {
+        _gameManager = gameObject.GetComponent<GameManager>();
         _slimeObject = GameObject.FindGameObjectWithTag("Slime");
         Camera cam = Camera.main;
         cam.transform.SetParent(_slimeObject.transform);
     }
+
+    private void Update()
+    {
+    }
+    
 
     public void AddHealth(float value)
     {
@@ -37,5 +44,10 @@ public class SlimeManager : MonoBehaviour
         {
             health = maxHealth;
         }
+    }
+
+    public void GetJelly()
+    {
+        jellyCount += 1;
     }
 }

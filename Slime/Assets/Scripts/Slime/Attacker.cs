@@ -8,31 +8,31 @@ public class Attacker : MonoBehaviour
     [SerializeField] private float speed;
     [SerializeField] private float range;
     
-    private Slime slime;
-    private Camera camera;
+    private Slime _slime;
+    private Camera _camera;
 
-    private float currentTime;
+    private float _currentTime;
 
     void Start()
     {
-        camera = Camera.main;
+        _camera = Camera.main;
     }
 
     void Update()
     {
         SetValues();
 
-        currentTime += Time.deltaTime;
-        if (currentTime > (1 / attackSpeed))
+        _currentTime += Time.deltaTime;
+        if (_currentTime > (1 / attackSpeed))
         {
             CreateAttack();
-            currentTime = 0;
+            _currentTime = 0;
         }
     }
 
     void CreateAttack()
     {
-        Vector2 mouseDirection = camera.ScreenToWorldPoint(Input.mousePosition);
+        Vector2 mouseDirection = _camera.ScreenToWorldPoint(Input.mousePosition);
         Vector2 currentPosition = transform.position;
         Vector2 attackDirection = (mouseDirection - currentPosition).normalized;
 
@@ -45,20 +45,20 @@ public class Attacker : MonoBehaviour
     // slime의 값 변경시 적용
     void SetValues()
     {
-        if (!ReferenceEquals(slime, null))
+        if (!ReferenceEquals(_slime, null))
         {
-            attackPrefeb = slime.attackPrefab;
-            attackSpeed = slime.attackSpeed;
-            damage = slime.damage;
-            speed = slime.speed;
-            range = slime.range;
+            attackPrefeb = _slime.attackPrefab;
+            attackSpeed = _slime.attackSpeed;
+            damage = _slime.damage;
+            speed = _slime.speed;
+            range = _slime.range;
         }
     }
 
     // slime 연결
     public void SetSlime(GameObject slimeObject)
     {
-        slime = slimeObject.GetComponent<Slime>();
+        _slime = slimeObject.GetComponent<Slime>();
         transform.SetParent(slimeObject.transform, false);
     }
 }

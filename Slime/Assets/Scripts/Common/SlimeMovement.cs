@@ -10,10 +10,12 @@ public class SlimeMovement : MonoBehaviour
     private Animator _animator;
     private float _currentTime;
     private float _period = 0.25f;
+    private MapManager _mapManager;
 
 
     void Start()
-    { 
+    {
+        _mapManager = FindObjectOfType<MapManager>();
         _renderer = GetComponent<SpriteRenderer>();
         _animator = GetComponent<Animator>();
     }
@@ -37,6 +39,19 @@ public class SlimeMovement : MonoBehaviour
 
             _animator.SetBool("isMoving", true);
             Vector2 movePosition = currentPosition + move * Time.deltaTime;
+
+            float maxY = _mapManager.GetMaxY();
+            float minY = _mapManager.GetMinY();
+            if (movePosition.y <= minY)
+            {
+                movePosition.y = minY;
+            }
+
+            if (maxY <= movePosition.y)
+            {
+                movePosition.y = maxY;
+            }
+
             transform.position = Vector2.Lerp(currentPosition, movePosition, animationCurve.Evaluate(_currentTime));
         }
         else

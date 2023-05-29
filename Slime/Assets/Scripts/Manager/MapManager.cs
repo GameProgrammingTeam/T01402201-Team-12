@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -11,21 +12,51 @@ public class MapManager : MonoBehaviour
     [SerializeField] public Sprite mapMiddle;
     [SerializeField] public Sprite mapBottom;
 
+    [SerializeField] public float paddingTop;
+    [SerializeField] public float paddingBottom;
+
+    private GameManager _gameManager;
     private Camera _camera;
 
     private List<Map> _maps = new List<Map>();
     private float _width;
 
+    private float _maxY;
+    private float _minY;
+
     private void Start()
     {
+        _gameManager = gameObject.GetComponent<GameManager>();
         _camera = Camera.main;
         _width = mapMiddle.bounds.size.x;
+        SetHeight();
         CreateMap(0);
     }
 
     void Update()
     {
         MapManagement();
+    }
+
+    void SetHeight()
+    {
+        float height = 0;
+        height += (mapSize > 0) ? mapTop.bounds.size.y : 0;
+        height += (mapSize > 2) ? mapMiddle.bounds.size.y * (mapSize - 2) : 0;
+        height += (mapSize > 1) ? mapBottom.bounds.size.y : 0;
+        height /= 2;
+        float cameraHalfHeight = _camera.orthographicSize;
+        _maxY = height - cameraHalfHeight  - paddingTop;
+        _minY = -height + cameraHalfHeight + paddingBottom;
+    }
+
+    public float GetMaxY()
+    {
+        return _maxY;
+    }
+    public float GetMinY()
+    {
+        return _minY;
     }
 
     void MapManagement()
@@ -71,21 +102,19 @@ public class MapManager : MonoBehaviour
 
             if (mapLeft <= cameraRight && cameraRight <= mapRight)
             {
-                // print(mapPositionX);
                 createMapRight = false;
             }
         }
+
         _maps = newMaps;
 
         if (createMapLeft)
         {
-            // print(createMapLeftMax - _width);
             CreateMap(createMapLeftMax - _width);
         }
 
         if (createMapRight)
         {
-            // print(createMapRightMax + _width);
             CreateMap(createMapRightMax + _width);
         }
     }
