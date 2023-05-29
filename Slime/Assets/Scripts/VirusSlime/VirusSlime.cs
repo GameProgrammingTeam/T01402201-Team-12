@@ -8,9 +8,9 @@ public class VirusSlime : MonoBehaviour
     [SerializeField] private SlimeSet slime;
     [SerializeField] private float moveSpeed;
     [SerializeField] private float health;
-    [SerializeField] private float damage;
-    [SerializeField] public float attackSpeed;
-    [SerializeField] public float range;
+    [SerializeField] public float damage;
+    [SerializeField] private float attackSpeed;
+    [SerializeField] private float range;
     private GameObject player;
     private SlimeMovement movement;
 

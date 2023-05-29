@@ -2,11 +2,11 @@ using UnityEngine;
 
 public class Attack : MonoBehaviour
 {
-    [SerializeField] public Vector2 startPosition;
+    [SerializeField] private Vector2 startPosition;
     [SerializeField] public float damage;
-    [SerializeField] public Vector2 direction;
-    [SerializeField] public float speed;
-    [SerializeField] public float range;
+    [SerializeField] private Vector2 direction;
+    [SerializeField] private float speed;
+    [SerializeField] private float range;
     
     void Update()
     {

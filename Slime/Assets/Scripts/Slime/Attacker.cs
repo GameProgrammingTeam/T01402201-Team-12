@@ -2,11 +2,11 @@ using UnityEngine;
 
 public class Attacker : MonoBehaviour
 {
-    [SerializeField] public Attack attackPrefeb;
-    [SerializeField] public float attackSpeed;
-    [SerializeField] public float damage;
-    [SerializeField] public float speed;
-    [SerializeField] public float range;
+    [SerializeField] private Attack attackPrefeb;
+    [SerializeField] private float attackSpeed;
+    [SerializeField] private float damage;
+    [SerializeField] private float speed;
+    [SerializeField] private float range;
     
     private Slime slime;
     private Camera camera;

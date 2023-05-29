@@ -11,6 +11,7 @@ public class Map : MonoBehaviour
     [SerializeField] private Sprite mapBottom;
 
     public float width;
+    public float height;
 
     void Start()
     {
@@ -23,8 +24,9 @@ public class Map : MonoBehaviour
         float totalHeight = 0;
         totalHeight += (mapSize > 0) ? mapTop.bounds.size.y : 0;
         totalHeight += (mapSize > 2) ? mapMiddle.bounds.size.y * (mapSize - 2) : 0;
-        totalHeight += (mapSize > 1) ? mapBottom.bounds.size.y * (mapSize - 2) : 0;
-        float prevHeight = (totalHeight - mapTop.bounds.size.y) / 2;
+        totalHeight += (mapSize > 1) ? mapBottom.bounds.size.y : 0;
+        float prevHeight = position.y + (totalHeight - mapTop.bounds.size.y) / 2;
+        height = prevHeight;
         Sprite sprite;
         for (int i = 0; i < mapSize; i++)
         {

@@ -6,11 +6,11 @@ public class Slime : MonoBehaviour
 {
     [SerializeField] private SlimeManager slimeManager;
 
-    [SerializeField] public SlimeSet slime;
-    [SerializeField] public Attacker attackerPrefab;
+    [SerializeField] private SlimeSet slime;
+    [SerializeField] private Attacker attackerPrefab;
     [SerializeField] public Attack attackPrefab;
-    [SerializeField] public float moveSpeed;
-    [SerializeField] public float health;
+    [SerializeField] private float moveSpeed;
+    [SerializeField] private float health;
     [SerializeField] public float attackSpeed;
     [SerializeField] public float damage;
     [SerializeField] public float speed;
