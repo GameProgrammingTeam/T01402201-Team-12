@@ -20,7 +20,7 @@ public class Map : MonoBehaviour
 
     void CreateMap()
     {
-        width = mapMiddle.bounds.size.y;
+        width = mapMiddle.bounds.size.x;
         float totalHeight = 0;
         totalHeight += (mapSize > 0) ? mapTop.bounds.size.y : 0;
         totalHeight += (mapSize > 2) ? mapMiddle.bounds.size.y * (mapSize - 2) : 0;
@@ -42,9 +42,9 @@ public class Map : MonoBehaviour
             {
                 sprite = mapMiddle;
             }
-
-            Quaternion rotation = Quaternion.Euler(Vector3.zero);
+            
             Vector3 rendererPosition = position + new Vector3(0, prevHeight, 0);
+            Quaternion rotation = Quaternion.Euler(Vector3.zero);
             SpriteRenderer mapRenderer = Instantiate(mapRendererPrefab, rendererPosition, rotation);
             mapRenderer.transform.SetParent(gameObject.transform);
             mapRenderer.sprite = sprite;

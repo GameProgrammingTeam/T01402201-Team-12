@@ -14,7 +14,7 @@ public class VirusSlimeSpawner : MonoBehaviour
     [SerializeField] private bool randomDamage;
     [SerializeField] private float damage;
     [SerializeField] public float attackSpeed;
-    [SerializeField] public float range;
+    [SerializeField] public float destroyRange;
 
     private float currentTime = 0.0f;
 
@@ -49,7 +49,8 @@ public class VirusSlimeSpawner : MonoBehaviour
 
     void Spawn()
     {
-        for (int i = 0; i < Random.Range(0, spawnMaxCount + 1); i++)
+        int spawnCount = Random.Range(0, spawnMaxCount + 1);
+        for (int i = 0; i < spawnCount; i++)
         {
             SlimeSet slime = Catch().slime;
             CreateVirusSlime(slime);
@@ -86,10 +87,10 @@ public class VirusSlimeSpawner : MonoBehaviour
         float newDamage = damage;
         if (randomDamage)
         {
-            damage = Random.Range(minDamage, damage + 1);
+            newDamage = Random.Range(minDamage, damage + 1);
         }
 
-        virusSlime.SetField(slimeSet, moveSpeed, health, newDamage, attackSpeed, range);
+        virusSlime.SetField(slimeSet, moveSpeed, health, newDamage, attackSpeed, destroyRange);
     }
 
     public void SetVirusSlimeManager(GameObject virusSlimeManager)
@@ -112,7 +113,7 @@ public class VirusSlimeSpawner : MonoBehaviour
             minDamage = virusSlimeManager.minDamage;
             damage = virusSlimeManager.damage;
             attackSpeed = virusSlimeManager.attackSpeed;
-            range = virusSlimeManager.range;
+            destroyRange = virusSlimeManager.destroyRange;
         }
 
         if (!randomDamage)

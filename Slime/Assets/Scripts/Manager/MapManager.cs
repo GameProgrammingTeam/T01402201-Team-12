@@ -1,8 +1,5 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using UnityEditor;
 using UnityEngine;
 
 public class MapManager : MonoBehaviour
@@ -14,11 +11,15 @@ public class MapManager : MonoBehaviour
     [SerializeField] public Sprite mapMiddle;
     [SerializeField] public Sprite mapBottom;
 
-    private Camera camera;
-    private List<Map> maps = new List<Map>();
+    private Camera _camera;
+
+    private List<Map> _maps = new List<Map>();
+    private float _width;
 
     private void Start()
     {
+        _camera = Camera.main;
+        _width = mapMiddle.bounds.size.x;
         CreateMap(0);
     }
 
@@ -27,40 +28,73 @@ public class MapManager : MonoBehaviour
         MapManagement();
     }
 
-    void CreateMap(float x)
-    {
-        camera = Camera.main;
-        Quaternion rotation = Quaternion.Euler(Vector3.zero);
-        Map map = Instantiate(mapPrefab, camera.transform.position, rotation);
-        map.SetField(mapRendererPrefab, new Vector2(x, 0), mapSize, mapTop, mapMiddle, mapBottom);
-        maps = maps.Append(map).ToList();
-    }
-
     void MapManagement()
     {
-        Transform cameraTransform = camera.transform;
+        float cameraPositionX = _camera.transform.position.x;
+        float cameraHalfWidth = _camera.orthographicSize * _camera.aspect;
 
-        float cameraLeft = cameraTransform.position.x - camera.sensorSize.x / 2;
-        float cameraRight = cameraTransform.position.x + camera.sensorSize.x / 2;
+        float cameraLeft = cameraPositionX - cameraHalfWidth;
+        float cameraRight = cameraPositionX + cameraHalfWidth;
 
         List<Map> newMaps = new List<Map>();
-        for (int i = 0; i < maps.Count; i++)
+        bool createMapLeft = true;
+        float createMapLeftMax = 0.0f;
+        bool createMapRight = true;
+        float createMapRightMax = 0.0f;
+        for (int i = 0; i < _maps.Count; i++)
         {
-            float mapLeft = maps[i].transform.position.x - maps[i].width / 2;
-            float mapRight = maps[i].transform.position.x + maps[i].width / 2;
+            float mapPositionX = _maps[i].transform.position.x;
+            float mapHalfWidth = _maps[i].width / 2;
+            float mapLeft = mapPositionX - mapHalfWidth;
+            float mapRight = mapPositionX + mapHalfWidth;
             if ((mapLeft <= cameraLeft && cameraLeft <= mapRight) ||
                 (mapLeft <= cameraRight && cameraRight <= mapRight) ||
                 (cameraLeft <= mapLeft && mapLeft <= cameraRight) ||
                 (cameraLeft <= mapRight && mapRight <= cameraRight))
             {
-                newMaps = newMaps.Append(maps[i]).ToList();
+                newMaps = newMaps.Append(_maps[i]).ToList();
             }
             else
             {
-                Destroy(maps[i].gameObject);
+                Destroy(_maps[i].gameObject);
             }
 
-            maps = newMaps;
+            if (mapPositionX <= createMapLeftMax)
+                createMapLeftMax = mapPositionX;
+            if (createMapRightMax <= mapPositionX)
+                createMapRightMax = mapPositionX;
+
+            if (mapLeft <= cameraLeft && cameraLeft <= mapRight)
+            {
+                createMapLeft = false;
+            }
+
+            if (mapLeft <= cameraRight && cameraRight <= mapRight)
+            {
+                // print(mapPositionX);
+                createMapRight = false;
+            }
         }
+        _maps = newMaps;
+
+        if (createMapLeft)
+        {
+            // print(createMapLeftMax - _width);
+            CreateMap(createMapLeftMax - _width);
+        }
+
+        if (createMapRight)
+        {
+            // print(createMapRightMax + _width);
+            CreateMap(createMapRightMax + _width);
+        }
+    }
+
+    void CreateMap(float x)
+    {
+        Quaternion rotation = Quaternion.Euler(Vector3.zero);
+        Map map = Instantiate(mapPrefab, new Vector3(x, 0, 0), rotation);
+        map.SetField(mapRendererPrefab, new Vector2(x, 0), mapSize, mapTop, mapMiddle, mapBottom);
+        _maps = _maps.Append(map).ToList();
     }
 }

@@ -133,8 +133,9 @@ GameObject:
   m_Component:
   - component: {fileID: 423297609}
   - component: {fileID: 423297610}
-  - component: {fileID: 423297612}
   - component: {fileID: 423297611}
+  - component: {fileID: 423297612}
+  - component: {fileID: 423297613}
   m_Layer: 0
   m_Name: Game
   m_TagString: Untagged
@@ -181,11 +182,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fa52de504a654b6aa3b9ab2a0be99a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  camera: {fileID: 0}
   mapPrefab: {fileID: 1169007161111732009, guid: 62ca1ea19533d44f8bd21226fdbbd7c7, type: 3}
-  mapSize: 3
-  mapTop: {fileID: 21300000, guid: ce2aec0e828854b2a9ad0a452ce39477, type: 3}
-  mapMiddle: {fileID: 21300000, guid: 8468030728daa4ee7b64f98c4a263fce, type: 3}
-  mapBottom: {fileID: 21300000, guid: 0f1de3ab32a80402db984a4caff730e9, type: 3}
+  mapRendererPrefab: {fileID: 5880272477113711840, guid: d483a4a0cb8124c4ca4f0f5d1202708a, type: 3}
+  mapSize: 5
+  mapTop: {fileID: 21300000, guid: 5fd41afbf6126425c9adf28b09f75b2b, type: 3}
+  mapMiddle: {fileID: 21300000, guid: 138c61d8f94414aa5840005cce5a2d9c, type: 3}
+  mapBottom: {fileID: 21300000, guid: 76b748a0150f04494a2671cac234930b, type: 3}
 --- !u!114 &423297612
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -207,11 +210,33 @@ MonoBehaviour:
   damage: 50
   speed: 10
   range: 20
---- !u!4 &523655856 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5986182461375802233, guid: 693a0eb18c3ea4565ac813133b120e16, type: 3}
-  m_PrefabInstance: {fileID: 2075980617}
+--- !u!114 &423297613
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 423297607}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa6f819e452ef44bba3e543879d7761e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  camera: {fileID: 0}
+  virusSlimeSpawnerPrefab: {fileID: 5986182461375802235, guid: 693a0eb18c3ea4565ac813133b120e16, type: 3}
+  spawnTime: 10
+  spawnMaxCount: 4
+  probabilities:
+  - slime: 18
+    probability: 1
+  virusSlimePrefab: {fileID: 8195735074804966630, guid: 6c78e39d720304d5bbf873b3389f2d32, type: 3}
+  moveSpeed: 4
+  health: 10
+  randomDamage: 1
+  minDamage: 5
+  damage: 10
+  attackSpeed: 10
+  range: 10
 --- !u!1 &845182602
 GameObject:
   m_ObjectHideFlags: 0
@@ -292,74 +317,10 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: -20}
   m_LocalScale: {x: 5, y: 5, z: 10}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 523655856}
-  - {fileID: 1006571378}
+  m_Children: []
   m_Father: {fileID: 2101025957}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &1006571378 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5986182461375802233, guid: 693a0eb18c3ea4565ac813133b120e16, type: 3}
-  m_PrefabInstance: {fileID: 1669756938}
-  m_PrefabAsset: {fileID: 0}
---- !u!1001 &1669756938
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 845182605}
-    m_Modifications:
-    - target: {fileID: 5986182461375802233, guid: 693a0eb18c3ea4565ac813133b120e16, type: 3}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5986182461375802233, guid: 693a0eb18c3ea4565ac813133b120e16, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 5986182461375802233, guid: 693a0eb18c3ea4565ac813133b120e16, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5986182461375802233, guid: 693a0eb18c3ea4565ac813133b120e16, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5986182461375802233, guid: 693a0eb18c3ea4565ac813133b120e16, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5986182461375802233, guid: 693a0eb18c3ea4565ac813133b120e16, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5986182461375802233, guid: 693a0eb18c3ea4565ac813133b120e16, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5986182461375802233, guid: 693a0eb18c3ea4565ac813133b120e16, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5986182461375802233, guid: 693a0eb18c3ea4565ac813133b120e16, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5986182461375802233, guid: 693a0eb18c3ea4565ac813133b120e16, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5986182461375802233, guid: 693a0eb18c3ea4565ac813133b120e16, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5986182461375802234, guid: 693a0eb18c3ea4565ac813133b120e16, type: 3}
-      propertyPath: m_Name
-      value: VirusSlimeSpawnerRight
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 693a0eb18c3ea4565ac813133b120e16, type: 3}
 --- !u!1001 &1852681779
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -425,63 +386,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 78244b793f2094fb4b7716375f2557d9, type: 3}
---- !u!1001 &2075980617
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 845182605}
-    m_Modifications:
-    - target: {fileID: 5986182461375802233, guid: 693a0eb18c3ea4565ac813133b120e16, type: 3}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5986182461375802233, guid: 693a0eb18c3ea4565ac813133b120e16, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -10
-      objectReference: {fileID: 0}
-    - target: {fileID: 5986182461375802233, guid: 693a0eb18c3ea4565ac813133b120e16, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.03
-      objectReference: {fileID: 0}
-    - target: {fileID: 5986182461375802233, guid: 693a0eb18c3ea4565ac813133b120e16, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5986182461375802233, guid: 693a0eb18c3ea4565ac813133b120e16, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5986182461375802233, guid: 693a0eb18c3ea4565ac813133b120e16, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5986182461375802233, guid: 693a0eb18c3ea4565ac813133b120e16, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5986182461375802233, guid: 693a0eb18c3ea4565ac813133b120e16, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5986182461375802233, guid: 693a0eb18c3ea4565ac813133b120e16, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5986182461375802233, guid: 693a0eb18c3ea4565ac813133b120e16, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5986182461375802233, guid: 693a0eb18c3ea4565ac813133b120e16, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5986182461375802234, guid: 693a0eb18c3ea4565ac813133b120e16, type: 3}
-      propertyPath: m_Name
-      value: VirusSlimeSpawnerLeft
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 693a0eb18c3ea4565ac813133b120e16, type: 3}
 --- !u!4 &2101025957 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 499574157809568745, guid: 78244b793f2094fb4b7716375f2557d9, type: 3}

@@ -10,7 +10,7 @@ public class VirusSlime : MonoBehaviour
     [SerializeField] private float health;
     [SerializeField] public float damage;
     [SerializeField] private float attackSpeed;
-    [SerializeField] private float range;
+    [SerializeField] private float destroyRange;
     private GameObject player;
     private SlimeMovement movement;
 
@@ -31,6 +31,10 @@ public class VirusSlime : MonoBehaviour
         Vector2 playerPosition = player.transform.position;
         Vector2 move = (playerPosition - currentPosition).normalized * moveSpeed;
         movement.MoveTo(currentPosition, move);
+        if (Vector2.Distance(playerPosition, transform.position) >= destroyRange)
+        {
+            Destroy(gameObject);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -48,13 +52,13 @@ public class VirusSlime : MonoBehaviour
         }
     }
 
-    public void SetField(SlimeSet slime, float moveSpeed, float health, float damage, float attackSpeed, float range)
+    public void SetField(SlimeSet slime, float moveSpeed, float health, float damage, float attackSpeed, float destroyRange)
     {
         this.slime = slime;
         this.moveSpeed = moveSpeed;
         this.health = health;
         this.damage = damage;
         this.attackSpeed = attackSpeed;
-        this.range = range;
+        this.destroyRange = destroyRange;
     }
 }
