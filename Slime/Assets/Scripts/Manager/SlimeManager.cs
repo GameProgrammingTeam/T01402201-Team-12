@@ -12,6 +12,8 @@ public class SlimeManager : MonoBehaviour
     [SerializeField] public float damage;
     [SerializeField] public float speed;
     [SerializeField] public float range;
+    [SerializeField] public float immuneTime;
+    [SerializeField] public bool immune;
     [SerializeField] public float jellyCount;
 
     private GameManager _gameManager;
@@ -23,12 +25,8 @@ public class SlimeManager : MonoBehaviour
         _slimeObject = GameObject.FindGameObjectWithTag("Slime");
         Camera cam = Camera.main;
         cam.transform.SetParent(_slimeObject.transform);
+        health = maxHealth;
     }
-
-    private void Update()
-    {
-    }
-    
 
     public void AddHealth(float value)
     {
@@ -38,6 +36,7 @@ public class SlimeManager : MonoBehaviour
         {
             // GameOver
             health = 0;
+            Time.timeScale = 0.0f;
         }
 
         if (health >= maxHealth)

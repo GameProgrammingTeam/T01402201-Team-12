@@ -10,13 +10,14 @@ public class VirusSlimeSpawner : MonoBehaviour
     [SerializeField] private VirusSlime virusSlimePrefab;
     [SerializeField] private float moveSpeed;
     [SerializeField] private float health;
+    [SerializeField] private float maxHealth;
     [SerializeField] private float minDamage;
     [SerializeField] private bool randomDamage;
     [SerializeField] private float damage;
-    [SerializeField] public float attackSpeed;
-    [SerializeField] public float destroyRange;
+    [SerializeField] private float attackSpeed;
+    [SerializeField] private float destroyRange;
 
-    private float currentTime = 0.0f;
+    private float _currentTime = 0.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -38,12 +39,12 @@ public class VirusSlimeSpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        currentTime += Time.deltaTime;
-        if (currentTime > spawnTime)
+        _currentTime += Time.deltaTime;
+        if (_currentTime > spawnTime)
         {
             SetValues();
             Spawn();
-            currentTime = 0;
+            _currentTime = 0;
         }
     }
 
@@ -89,8 +90,7 @@ public class VirusSlimeSpawner : MonoBehaviour
         {
             newDamage = Random.Range(minDamage, damage + 1);
         }
-
-        virusSlime.SetField(slimeSet, moveSpeed, health, newDamage, attackSpeed, destroyRange);
+        virusSlime.SetField(slimeSet, moveSpeed, health, maxHealth,newDamage, attackSpeed, destroyRange);
     }
 
     public void SetVirusSlimeManager(GameObject virusSlimeManager)
@@ -109,6 +109,7 @@ public class VirusSlimeSpawner : MonoBehaviour
             virusSlimePrefab = virusSlimeManager.virusSlimePrefab;
             moveSpeed = virusSlimeManager.moveSpeed;
             health = virusSlimeManager.health;
+            maxHealth = virusSlimeManager.maxHealth;
             randomDamage = virusSlimeManager.randomDamage;
             minDamage = virusSlimeManager.minDamage;
             damage = virusSlimeManager.damage;

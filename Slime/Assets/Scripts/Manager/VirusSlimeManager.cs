@@ -10,6 +10,7 @@ public class VirusSlimeManager : MonoBehaviour
     [SerializeField] public VirusSlime virusSlimePrefab;
     [SerializeField] public float moveSpeed;
     [SerializeField] public float health;
+    [SerializeField] public float maxHealth;
     [SerializeField] public bool randomDamage;
     [SerializeField] public float minDamage;
     [SerializeField] public float damage;

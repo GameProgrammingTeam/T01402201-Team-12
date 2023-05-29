@@ -37,7 +37,7 @@ public class Slime : MonoBehaviour
         if (immune)
         {
             _currentImmuneTime += Time.deltaTime;
-            if (_currentImmuneTime <= immuneTime)
+            if (immuneTime <= _currentImmuneTime)
             {
                 immune = false;
             }
@@ -54,9 +54,12 @@ public class Slime : MonoBehaviour
     {
         if (other.gameObject.CompareTag("VirusSlime"))
         {
-            float damage = other.gameObject.GetComponent<VirusSlime>().damage;
-            AddHealth(-damage);
-            immune = true;
+            if (!immune)
+            {
+                float damage = other.gameObject.GetComponent<VirusSlime>().damage;
+                AddHealth(-damage);
+                immune = true;
+            }
         }
     }
 
@@ -115,6 +118,8 @@ public class Slime : MonoBehaviour
             damage = slimeManager.damage;
             speed = slimeManager.speed;
             range = slimeManager.range;
+            immuneTime = slimeManager.immuneTime;
+            immune = slimeManager.immune;
         }
     }
 
