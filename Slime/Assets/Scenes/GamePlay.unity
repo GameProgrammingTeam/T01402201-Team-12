@@ -313,9 +313,9 @@ MonoBehaviour:
   slimeMoveSpeed: 10
   slimeHealth: 5
   slimeAttackSpeed: 5
-  slimeDamage: 0
-  slimeSpeed: 0
-  slimeRange: 0
+  slimeDamage: 5
+  slimeSpeed: 5
+  slimeRange: 5
 --- !u!4 &523655856 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5986182461375802233, guid: 693a0eb18c3ea4565ac813133b120e16, type: 3}

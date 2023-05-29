@@ -13,7 +13,7 @@ public class SlimeMovement : MonoBehaviour
 
 
     void Start()
-    {
+    { 
         renderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
     }

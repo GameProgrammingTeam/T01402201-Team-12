@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Slime : MonoBehaviour
 {
-    [SerializeField] private GameManager gameManager;
+    [SerializeField] private SlimeManager slimeManager;
 
     [SerializeField] public SlimeSet slime;
     [SerializeField] public Attacker attackerPrefab;
@@ -54,24 +54,24 @@ public class Slime : MonoBehaviour
     // gameManager의 값 변경시 적용
     void SetValues()
     {
-        if (!ReferenceEquals(gameManager, null))
+        if (!ReferenceEquals(slimeManager, null))
         {
-            slime = gameManager.slime;
-            attackerPrefab = gameManager.slimeAttackerPrefab;
-            attackPrefab = gameManager.slimeAttackPrefab;
-            moveSpeed = gameManager.slimeMoveSpeed;
-            health = gameManager.slimeMoveSpeed;
-            attackSpeed = gameManager.slimeAttackSpeed;
-            damage = gameManager.slimeDamage;
-            speed = gameManager.slimeAttackSpeed;
-            range = gameManager.slimeRange;
+            slime = slimeManager.slime;
+            attackerPrefab = slimeManager.attackerPrefab;
+            attackPrefab = slimeManager.attackPrefab;
+            moveSpeed = slimeManager.moveSpeed;
+            health = slimeManager.health;
+            attackSpeed = slimeManager.attackSpeed;
+            damage = slimeManager.damage;
+            speed = slimeManager.speed;
+            range = slimeManager.range;
         }
     }
     
     // gameManager 연결
-    public void SetGameManager(GameObject gameManager)
+    public void SetSlimeManager(GameObject slimeManager)
     {
-        this.gameManager = gameManager.GetComponent<GameManager>();
-        transform.SetParent(gameManager.transform);
+        this.slimeManager = slimeManager.GetComponent<SlimeManager>();
+        transform.SetParent(slimeManager.transform);
     }
 }
