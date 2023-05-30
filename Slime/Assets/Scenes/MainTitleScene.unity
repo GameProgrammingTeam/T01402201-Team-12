@@ -1469,7 +1469,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1, y: -135}
+  m_AnchoredPosition: {x: 0, y: -120}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &963749502
@@ -1655,15 +1655,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c86ca07820e01c43bd2cf3845964a44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slime: 0
-  slimeAttackerPrefab: {fileID: 0}
-  slimeAttackPrefab: {fileID: 0}
-  slimeMoveSpeed: 0
-  slimeHealth: 0
-  slimeAttackSpeed: 0
-  slimeDamage: 0
-  slimeSpeed: 0
-  slimeRange: 0
 --- !u!4 &1060601420
 Transform:
   m_ObjectHideFlags: 0
@@ -1854,7 +1845,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
