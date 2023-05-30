@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class VirusSlime : MonoBehaviour
@@ -12,6 +9,10 @@ public class VirusSlime : MonoBehaviour
     [SerializeField] public float damage;
     [SerializeField] private float attackSpeed;
     [SerializeField] private float destroyRange;
+    [SerializeField] private Jelly jellyPrefab;
+    [SerializeField] private int jellyExp;
+    [SerializeField] private float jellyProbability;
+    [SerializeField] private float jellyRemainTime;
 
     private Camera _camera;
     private GameObject player;
@@ -50,10 +51,21 @@ public class VirusSlime : MonoBehaviour
             health -= damage;
             if (health <= 0)
             {
+                CreateJelly();
                 Destroy(gameObject);
             }
 
             Destroy(other.gameObject);
+        }
+    }
+
+    private void CreateJelly()
+    {
+        if (Random.Range(0, 1.0f) <= jellyProbability)
+        {
+            Quaternion rotation = Quaternion.Euler(Vector3.zero);
+            Jelly jelly = Instantiate(jellyPrefab, transform.position, rotation);
+            jelly.SetValues(jellyRemainTime, jellyExp);
         }
     }
 
@@ -63,7 +75,11 @@ public class VirusSlime : MonoBehaviour
         float maxHealth,
         float damage,
         float attackSpeed,
-        float destroyRange)
+        float destroyRange,
+        Jelly jellyPrefab,
+        int jellyExp,
+        float jellyProbability,
+        float jellyRemainTime)
     {
         this.slime = slime;
         this.moveSpeed = moveSpeed;
@@ -72,5 +88,9 @@ public class VirusSlime : MonoBehaviour
         this.damage = damage;
         this.attackSpeed = attackSpeed;
         this.destroyRange = destroyRange;
+        this.jellyPrefab = jellyPrefab;
+        this.jellyExp = jellyExp;
+        this.jellyProbability = jellyProbability;
+        this.jellyRemainTime = jellyRemainTime;
     }
 }

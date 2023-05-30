@@ -16,6 +16,11 @@ public class VirusSlimeManager : MonoBehaviour
     [SerializeField] public float damage;
     [SerializeField] public float attackSpeed;
     [SerializeField] public float destroyRange;
+    [SerializeField] public Jelly jellyPrefab;
+    [SerializeField] public int jellyExp;
+    [SerializeField] public float jellyProbability;
+    [SerializeField] public float jellyRemainTime;
+    
 
     private Camera _camera;
 
@@ -33,5 +38,14 @@ public class VirusSlimeManager : MonoBehaviour
         VirusSlimeSpawner virusSlimeSpawnerRight = Instantiate(virusSlimeSpawnerPrefab, position, rotation);
         virusSlimeSpawnerRight.SetVirusSlimeManager(gameObject);
         virusSlimeSpawnerRight.transform.SetParent(_camera.transform);
+        if (jellyProbability > 1.0f)
+        {
+            jellyProbability = 1.0f;
+        }
+
+        if (jellyProbability < 0.0f)
+        {
+            jellyProbability = 0.0f;
+        }
     }
 }

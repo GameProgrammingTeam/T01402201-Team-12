@@ -61,6 +61,12 @@ public class Slime : MonoBehaviour
                 immune = true;
             }
         }
+        if (other.gameObject.CompareTag("Jelly"))
+        {
+            int exp = other.gameObject.GetComponent<Jelly>().exp;
+            AddExp(exp);
+            Destroy(other.gameObject);
+        }
     }
 
     private void AddHealth(float value)
@@ -81,6 +87,14 @@ public class Slime : MonoBehaviour
             {
                 health = 0;
             }
+        }
+    }
+    
+    private void AddExp(int value)
+    {
+        if (!ReferenceEquals(slimeManager, null))
+        {
+            slimeManager.AddExp(value);
         }
     }
 
