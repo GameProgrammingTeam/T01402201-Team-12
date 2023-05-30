@@ -159,11 +159,6 @@ ExportedObj/
 *.opendb
 *.VC.db
 
-# Unity3D generated meta files
-*.pidb.meta
-*.pdb.meta
-*.mdb.meta
-
 # Unity3D generated file on crash reports
 sysinfo.txt
 
@@ -177,10 +172,6 @@ sysinfo.txt
 
 # Packed Addressables
 /[Aa]ssets/[Aa]ddressable[Aa]ssets[Dd]ata/*/*.bin*
-
-# Temporary auto-generated Android Assets
-/[Aa]ssets/[Ss]treamingAssets/aa.meta
-/[Aa]ssets/[Ss]treamingAssets/aa/*
 
 ### VisualStudioCode ###
 .vscode/*
@@ -273,7 +264,6 @@ StyleCopReport.xml
 *_p.c
 *_h.h
 *.ilk
-*.meta
 *.obj
 *.iobj
 *.pch
@@ -633,11 +623,6 @@ ExportedObj/
 *.opendb
 *.VC.db
 
-# Unity3D generated meta files
-*.pidb.meta
-*.pdb.meta
-*.mdb.meta
-
 # Unity3D generated file on crash reports
 sysinfo.txt
 
@@ -652,8 +637,4 @@ crashlytics-build.properties
 
 # Packed Addressables
 /[Aa]ssets/[Aa]ddressable[Aa]ssets[Dd]ata/*/*.bin*
-
-# Temporary auto-generated Android Assets
-/[Aa]ssets/[Ss]treamingAssets/aa.meta
-/[Aa]ssets/[Ss]treamingAssets/aa/*
 
