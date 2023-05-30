@@ -14,7 +14,7 @@ public class SlimeManager : MonoBehaviour
     [SerializeField] public float range;
     [SerializeField] public float immuneTime;
     [SerializeField] public bool immune;
-    [SerializeField] public float jellyCount;
+    [SerializeField] public int exp;
 
     private GameManager _gameManager;
     private GameObject _slimeObject;
@@ -45,8 +45,8 @@ public class SlimeManager : MonoBehaviour
         }
     }
 
-    public void GetJelly()
+    public void AddExp(int value)
     {
-        jellyCount += 1;
+        exp += value;
     }
 }

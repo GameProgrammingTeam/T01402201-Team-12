@@ -16,6 +16,10 @@ public class VirusSlimeSpawner : MonoBehaviour
     [SerializeField] private float damage;
     [SerializeField] private float attackSpeed;
     [SerializeField] private float destroyRange;
+    [SerializeField] private Jelly jellyPrefab;
+    [SerializeField] private int jellyExp;
+    [SerializeField] private float jellyProbability;
+    [SerializeField] private float jellyRemainTime;
 
     private float _currentTime = 0.0f;
 
@@ -90,7 +94,18 @@ public class VirusSlimeSpawner : MonoBehaviour
         {
             newDamage = Random.Range(minDamage, damage + 1);
         }
-        virusSlime.SetField(slimeSet, moveSpeed, health, maxHealth,newDamage, attackSpeed, destroyRange);
+
+        virusSlime.SetField(slimeSet,
+            moveSpeed,
+            health,
+            maxHealth, 
+            newDamage,
+            attackSpeed, 
+            destroyRange,
+            jellyPrefab,
+            jellyExp,
+            jellyProbability,
+            jellyRemainTime);
     }
 
     public void SetVirusSlimeManager(GameObject virusSlimeManager)
@@ -115,6 +130,10 @@ public class VirusSlimeSpawner : MonoBehaviour
             damage = virusSlimeManager.damage;
             attackSpeed = virusSlimeManager.attackSpeed;
             destroyRange = virusSlimeManager.destroyRange;
+            jellyPrefab = virusSlimeManager.jellyPrefab;
+            jellyExp = virusSlimeManager.jellyExp;
+            jellyProbability = virusSlimeManager.jellyProbability;
+            jellyRemainTime = virusSlimeManager.jellyRemainTime;
         }
 
         if (!randomDamage)

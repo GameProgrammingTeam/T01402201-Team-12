@@ -1,0 +1,126 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &880913889017853575
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 880913889017853577}
+  - component: {fileID: 880913889017853578}
+  - component: {fileID: 880913889017853579}
+  - component: {fileID: 880913889017853580}
+  - component: {fileID: 880913889017853581}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &880913889017853577
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 880913889017853575}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &880913889017853578
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 880913889017853575}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e70c2351dfd74c5cbc7349074784df9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &880913889017853579
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 880913889017853575}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fa52de504a654b6aa3b9ab2a0be99a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mapPrefab: {fileID: 1169007161111732009, guid: 62ca1ea19533d44f8bd21226fdbbd7c7, type: 3}
+  mapRendererPrefab: {fileID: 5880272477113711840, guid: d483a4a0cb8124c4ca4f0f5d1202708a, type: 3}
+  mapSize: 3
+  mapTop: {fileID: 21300000, guid: ce2aec0e828854b2a9ad0a452ce39477, type: 3}
+  mapMiddle: {fileID: 21300000, guid: 8468030728daa4ee7b64f98c4a263fce, type: 3}
+  mapBottom: {fileID: 21300000, guid: 0f1de3ab32a80402db984a4caff730e9, type: 3}
+  paddingTop: 0
+  paddingBottom: 0
+--- !u!114 &880913889017853580
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 880913889017853575}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ced42f97dd504e55abdd3b3dda2bf2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slime: 14
+  attackerPrefab: {fileID: 3883073863883782132, guid: dca09aecdeaa24104b376be932ffcc0b, type: 3}
+  attackPrefab: {fileID: 7071995795188218340, guid: 0c69bd71980a642c29dc893b56a20c60, type: 3}
+  moveSpeed: 10
+  health: 10
+  maxHealth: 100
+  attackSpeed: 5
+  damage: 50
+  speed: 10
+  range: 20
+  immuneTime: 1
+  immune: 0
+  exp: 0
+--- !u!114 &880913889017853581
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 880913889017853575}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa6f819e452ef44bba3e543879d7761e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  virusSlimeSpawnerPrefab: {fileID: 5986182461375802235, guid: 693a0eb18c3ea4565ac813133b120e16, type: 3}
+  weight: 0
+  spawnTime: 4
+  spawnMaxCount: 4
+  probabilities:
+  - slime: 18
+    probability: 1
+  virusSlimePrefab: {fileID: 8195735074804966630, guid: 6c78e39d720304d5bbf873b3389f2d32, type: 3}
+  moveSpeed: 4
+  health: 10
+  maxHealth: 30
+  randomDamage: 0
+  minDamage: 5
+  damage: 10
+  attackSpeed: 10
+  destroyRange: 30
+  jellyPrefab: {fileID: 6748631098138850834, guid: 136b9bd5105a44e3085538e23a7c08a0, type: 3}
+  jellyExp: 10
+  jellyProbability: 1
+  jellyRemainTime: 4
