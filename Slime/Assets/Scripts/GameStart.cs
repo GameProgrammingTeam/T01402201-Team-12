@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.Windows;
 using static System.Runtime.CompilerServices.RuntimeHelpers;
 using Input = UnityEngine.Input;
@@ -20,11 +21,15 @@ public class GameStart : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.KeypadEnter) || Input.GetKeyDown(KeyCode.Space))
                 {
-            Invoke("InputGameStart", 6f);
-            //obj.GetComponent<GameManager>().InputGameStart();
+            Invoke("InputGameStart", 4.5f);
+            
         };
        
         
     }
-    
+    public void InputGameStart()
+    {
+        SceneManager.LoadScene("GamePlay");
+    }
+
 }
