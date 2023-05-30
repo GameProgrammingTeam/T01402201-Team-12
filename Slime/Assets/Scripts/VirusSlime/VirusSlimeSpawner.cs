@@ -3,21 +3,21 @@ using Random = UnityEngine.Random;
 
 public class VirusSlimeSpawner : MonoBehaviour
 {
+    [SerializeField] private VirusSlimeManager virusSlimeManager;
     [SerializeField] private float spawnTime;
     [SerializeField] private int spawnMaxCount;
     [SerializeField] private SlimeProbability[] probabilities;
     [SerializeField] private VirusSlime virusSlimePrefab;
-
-    [SerializeField] private GameObject positionObject;
-    [SerializeField] private float position;
-
     [SerializeField] private float moveSpeed;
     [SerializeField] private float health;
+    [SerializeField] private float maxHealth;
+    [SerializeField] private float minDamage;
+    [SerializeField] private bool randomDamage;
     [SerializeField] private float damage;
-    [SerializeField] public float attackSpeed;
-    [SerializeField] public float range;
+    [SerializeField] private float attackSpeed;
+    [SerializeField] private float destroyRange;
 
-    private float currentTime = 0.0f;
+    private float _currentTime = 0.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -39,17 +39,19 @@ public class VirusSlimeSpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        currentTime += Time.deltaTime;
-        if (currentTime > spawnTime)
+        _currentTime += Time.deltaTime;
+        if (_currentTime > spawnTime)
         {
+            SetValues();
             Spawn();
-            currentTime = 0;
+            _currentTime = 0;
         }
     }
 
     void Spawn()
     {
-        for (int i = 0; i < Random.Range(0, spawnMaxCount + 1); i++)
+        int spawnCount = Random.Range(0, spawnMaxCount + 1);
+        for (int i = 0; i < spawnCount; i++)
         {
             SlimeSet slime = Catch().slime;
             CreateVirusSlime(slime);
@@ -83,6 +85,41 @@ public class VirusSlimeSpawner : MonoBehaviour
         Vector3 slimePosition = new Vector3(currentPosition.x, currentPosition.y, 0) + randomPosition;
         Quaternion rotation = Quaternion.Euler(Vector3.zero);
         VirusSlime virusSlime = Instantiate(virusSlimePrefab, slimePosition, rotation);
-        virusSlime.SetField(slimeSet, moveSpeed, health, damage, attackSpeed, range);
+        float newDamage = damage;
+        if (randomDamage)
+        {
+            newDamage = Random.Range(minDamage, damage + 1);
+        }
+        virusSlime.SetField(slimeSet, moveSpeed, health, maxHealth,newDamage, attackSpeed, destroyRange);
+    }
+
+    public void SetVirusSlimeManager(GameObject virusSlimeManager)
+    {
+        this.virusSlimeManager = virusSlimeManager.GetComponent<VirusSlimeManager>();
+        transform.SetParent(virusSlimeManager.transform);
+    }
+
+    void SetValues()
+    {
+        if (!ReferenceEquals(virusSlimeManager, null))
+        {
+            spawnTime = virusSlimeManager.spawnTime;
+            spawnMaxCount = virusSlimeManager.spawnMaxCount;
+            probabilities = virusSlimeManager.probabilities;
+            virusSlimePrefab = virusSlimeManager.virusSlimePrefab;
+            moveSpeed = virusSlimeManager.moveSpeed;
+            health = virusSlimeManager.health;
+            maxHealth = virusSlimeManager.maxHealth;
+            randomDamage = virusSlimeManager.randomDamage;
+            minDamage = virusSlimeManager.minDamage;
+            damage = virusSlimeManager.damage;
+            attackSpeed = virusSlimeManager.attackSpeed;
+            destroyRange = virusSlimeManager.destroyRange;
+        }
+
+        if (!randomDamage)
+        {
+            minDamage = damage;
+        }
     }
 }
