@@ -2,6 +2,11 @@ using UnityEngine;
 
 public class SlimeManager : MonoBehaviour
 {
+    int x = 0;
+    int y = 1;
+    int z = 0;
+
+    [SerializeField] public int Levelexp = 10;
     [SerializeField] public SlimeSet slime;
     [SerializeField] public Attacker attackerPrefab;
     [SerializeField] public Attack attackPrefab;
@@ -14,10 +19,19 @@ public class SlimeManager : MonoBehaviour
     [SerializeField] public float range;
     [SerializeField] public float immuneTime;
     [SerializeField] public bool immune;
+
     [SerializeField] public int exp;
+    [SerializeField] public int[] nextExp;
+    [SerializeField] public int level;
+    [SerializeField] public int score;
+
+
 
     private GameManager _gameManager;
     private GameObject _slimeObject;
+
+
+
 
     private void Start()
     {
@@ -26,6 +40,13 @@ public class SlimeManager : MonoBehaviour
         Camera cam = Camera.main;
         cam.transform.SetParent(_slimeObject.transform);
         health = maxHealth;
+
+        for (int i = 0; i < 30; i++){
+            z = x + y;
+            x = y;
+            y = z;
+            nextExp[i] = x * 10;
+        }
     }
 
     public void AddHealth(float value)
@@ -48,5 +69,12 @@ public class SlimeManager : MonoBehaviour
     public void AddExp(int value)
     {
         exp += value;
+        score++;
+
+        if (exp == nextExp[level])
+        {
+            level++;
+            exp = 0;
+        }
     }
 }

@@ -18,6 +18,7 @@ public class VirusSlime : MonoBehaviour
     private GameObject player;
     private SlimeMovement movement;
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -49,10 +50,14 @@ public class VirusSlime : MonoBehaviour
         {
             float damage = other.gameObject.GetComponent<Attack>().damage;
             health -= damage;
+
+            Vector3 pos = Camera.main.WorldToScreenPoint(other.transform.position);
+            DamageTextController.Instance.CreateDamageText(pos, damage);
             if (health <= 0)
             {
                 CreateJelly();
                 Destroy(gameObject);
+                
             }
 
             Destroy(other.gameObject);
