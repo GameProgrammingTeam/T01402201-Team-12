@@ -6,6 +6,7 @@ using UnityEngine;
 public class DamageTextController : MonoBehaviour
 {
     private static DamageTextController _instance = null;
+    private float destroyRange = 20.0f;
 
     public static DamageTextController Instance
     {
@@ -27,6 +28,8 @@ public class DamageTextController : MonoBehaviour
     {
         GameObject damageText = Instantiate(dmgText, hitPoint, Quaternion.identity, MainCanvas.transform);
         damageText.GetComponent<TextMeshProUGUI>().text = hitDamage.ToString();
+        DamageText damageTextComponent = damageText.GetComponent<DamageText>();
+        damageTextComponent.SetRange(destroyRange);
     }
 }
    
