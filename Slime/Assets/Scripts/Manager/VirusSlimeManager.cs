@@ -20,8 +20,12 @@ public class VirusSlimeManager : MonoBehaviour
     [SerializeField] public int jellyExp;
     [SerializeField] public float jellyProbability;
     [SerializeField] public float jellyRemainTime;
+
+    private VirusSlimeSpawner virusSlimeSpawnerLeft;
+    private VirusSlimeSpawner virusSlimeSpawnerRight;
     
 
+    
     private Camera _camera;
 
     private void Start()
@@ -32,10 +36,10 @@ public class VirusSlimeManager : MonoBehaviour
         Vector3 position = new Vector3(halfWidth + spawnerHalfWidth + weight, 0, 0);
         Quaternion rotation = Quaternion.Euler(Vector3.zero);
 
-        VirusSlimeSpawner virusSlimeSpawnerLeft = Instantiate(virusSlimeSpawnerPrefab, -position, rotation);
+        virusSlimeSpawnerLeft = Instantiate(virusSlimeSpawnerPrefab, -position, rotation);
         virusSlimeSpawnerLeft.SetVirusSlimeManager(gameObject);
         virusSlimeSpawnerLeft.transform.SetParent(_camera.transform);
-        VirusSlimeSpawner virusSlimeSpawnerRight = Instantiate(virusSlimeSpawnerPrefab, position, rotation);
+        virusSlimeSpawnerRight = Instantiate(virusSlimeSpawnerPrefab, position, rotation);
         virusSlimeSpawnerRight.SetVirusSlimeManager(gameObject);
         virusSlimeSpawnerRight.transform.SetParent(_camera.transform);
         if (jellyProbability > 1.0f)
@@ -47,5 +51,11 @@ public class VirusSlimeManager : MonoBehaviour
         {
             jellyProbability = 0.0f;
         }
+    }
+
+    public void Upgrade()
+    {
+        maxHealth *= 1.1f;;
+        damage *= 1.1f;
     }
 }

@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    [SerializeField] public float virusSlimeUpgradeTime = 5.0f;
+    private float virusSlimeTime = 0.0f;
     private SlimeManager slimeManager;
     private MapManager mapManager;
     private VirusSlimeManager virusSlimeManager;
@@ -22,5 +24,16 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         gameTime += Time.deltaTime;
+        manageVirusSlime();
+    }
+
+    private void manageVirusSlime()
+    {
+        virusSlimeTime += Time.deltaTime;
+        if (virusSlimeTime >= virusSlimeUpgradeTime)
+        {
+            virusSlimeManager.Upgrade();
+            virusSlimeTime = 0;
+        }
     }
 }
