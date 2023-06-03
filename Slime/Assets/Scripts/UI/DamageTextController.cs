@@ -27,7 +27,7 @@ public class DamageTextController : MonoBehaviour
     public void CreateDamageText(Vector3 hitPoint, float hitDamage)
     {
         GameObject damageText = Instantiate(dmgText, hitPoint, Quaternion.identity, MainCanvas.transform);
-        damageText.GetComponent<TextMeshProUGUI>().text = hitDamage.ToString();
+        damageText.GetComponent<TextMeshProUGUI>().text = string.Format("{0:F0}",(int) hitDamage);
         DamageText damageTextComponent = damageText.GetComponent<DamageText>();
         damageTextComponent.SetRange(destroyRange);
     }
