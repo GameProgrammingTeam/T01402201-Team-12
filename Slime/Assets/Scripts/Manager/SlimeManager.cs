@@ -8,7 +8,7 @@ public class SlimeManager : MonoBehaviour
     int y = 1;
     int z = 0;
 
-    [SerializeField] public GameObject levelUpPannel;
+    [SerializeField] public GameObject levelUpPanel;
     [SerializeField] public int Levelexp = 10;
     [SerializeField] public SlimeSet slime;
     [SerializeField] public Attacker attackerPrefab;
@@ -51,6 +51,11 @@ public class SlimeManager : MonoBehaviour
         StatusSet.Damage,
         StatusSet.MaxHealth
     };
+    Sprite moveSpeedImage;
+    Sprite attackSpeedImage;
+    Sprite damageImage;
+    Sprite maxHealthImage;
+
 
 
     private void Start()
@@ -61,13 +66,38 @@ public class SlimeManager : MonoBehaviour
         cam.transform.SetParent(_slimeObject.transform);
         health = maxHealth;
 
-        Transform pannelTransform = levelUpPannel.transform.Find("Panel");
-        _choice01Label = pannelTransform.Find("choice01").Find("choice01label").GetComponent<TextMeshProUGUI>();
-        _choice02Label = pannelTransform.Find("choice02").Find("choice02label").GetComponent<TextMeshProUGUI>();
-        _choice03Label = pannelTransform.Find("choice03").Find("choice03label").GetComponent<TextMeshProUGUI>();
-        // _choice01Image = levelUpPannel.transform.Find("choice01label").GetComponent<Image>();
-        // _choice02Image = levelUpPannel.transform.Find("choice02label").GetComponent<Image>();
-        // _choice03Image = levelUpPannel.transform.Find("choice03label").GetComponent<Image>();
+        Sprite[] statusSprites = Resources.LoadAll<Sprite>("StatusIcon");
+        foreach (var statusSprite in statusSprites)
+        {
+            
+            switch (statusSprite.name)
+            {
+                case "MoveSpeed":
+                    moveSpeedImage = statusSprite;
+                    print(statusSprite.name);
+                    break;
+                case "AttackSpeed":
+                    attackSpeedImage = statusSprite;
+                    print(statusSprite.name);
+                    break;
+                case "Damage":
+                    damageImage = statusSprite;
+                    print(statusSprite.name);
+                    break;
+                case "MaxHealth":
+                    maxHealthImage = statusSprite;
+                    print(statusSprite.name);
+                    break;
+            }
+        }
+        
+        Transform panelTransform = levelUpPanel.transform.Find("Panel");
+        _choice01Label = panelTransform.Find("choice01").Find("choice01label").GetComponent<TextMeshProUGUI>();
+        _choice02Label = panelTransform.Find("choice02").Find("choice02label").GetComponent<TextMeshProUGUI>();
+        _choice03Label = panelTransform.Find("choice03").Find("choice03label").GetComponent<TextMeshProUGUI>();
+        _choice01Image = panelTransform.Find("choice01").Find("choice01image").GetComponent<Image>();
+        _choice02Image = panelTransform.Find("choice02").Find("choice02image").GetComponent<Image>();
+        _choice03Image = panelTransform.Find("choice03").Find("choice03image").GetComponent<Image>();
 
 
         for (int i = 0; i < 30; i++)
@@ -119,30 +149,30 @@ public class SlimeManager : MonoBehaviour
         ShuffleSet();
         SetLevelUpUI();
         Time.timeScale = 0;
-        levelUpPannel.gameObject.SetActive(true);
+        levelUpPanel.gameObject.SetActive(true);
     }
 
     public void ChoiceStatus01()
     {
         Upgrade(1);
-        CloseLevelUpPannel();
+        CloseLevelUpPanel();
     }
 
     public void ChoiceStatus02()
     {
         Upgrade(2);
-        CloseLevelUpPannel();
+        CloseLevelUpPanel();
     }
 
     public void ChoiceStatus03()
     {
         Upgrade(3);
-        CloseLevelUpPannel();
+        CloseLevelUpPanel();
     }
 
-    private void CloseLevelUpPannel()
+    private void CloseLevelUpPanel()
     {
-        levelUpPannel.SetActive(false);
+        levelUpPanel.SetActive(false);
         Time.timeScale = 1;
     }
 
@@ -151,6 +181,9 @@ public class SlimeManager : MonoBehaviour
         _choice01Label.text = GetChoiceString(1);
         _choice02Label.text = GetChoiceString(2);
         _choice03Label.text = GetChoiceString(3);
+        _choice01Image.sprite = GetChoiceImage(1);
+        _choice02Image.sprite = GetChoiceImage(2);
+        _choice03Image.sprite = GetChoiceImage(3);
     }
 
     private string GetChoiceString(int choiceNum)
@@ -169,6 +202,28 @@ public class SlimeManager : MonoBehaviour
                 break;
             case StatusSet.MaxHealth:
                 result = string.Format("Max Health  Lv.{0:F0}", _maxHealthLv + 1);
+                break;
+        }
+
+        return result;
+    }
+    
+    private Sprite GetChoiceImage(int choiceNum)
+    {
+        Sprite result = moveSpeedImage;
+        switch (_statusSets[choiceNum - 1])
+        {
+            case StatusSet.MoveSpeed:
+                result = moveSpeedImage;
+                break;
+            case StatusSet.AttackSpeed:
+                result = attackSpeedImage;
+                break;
+            case StatusSet.Damage:
+                result = damageImage;
+                break;
+            case StatusSet.MaxHealth:
+                result = maxHealthImage;
                 break;
         }
 
