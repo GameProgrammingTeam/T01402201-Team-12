@@ -29,6 +29,7 @@ public class SlimeManager : MonoBehaviour
 
     private GameManager _gameManager;
     private GameObject _slimeObject;
+    public GameObject Gameover;
 
 
 
@@ -40,6 +41,7 @@ public class SlimeManager : MonoBehaviour
         Camera cam = Camera.main;
         cam.transform.SetParent(_slimeObject.transform);
         health = maxHealth;
+        
 
         for (int i = 0; i < 30; i++){
             z = x + y;
@@ -57,7 +59,8 @@ public class SlimeManager : MonoBehaviour
         {
             // GameOver
             health = 0;
-            Time.timeScale = 0.0f;
+            
+            Gameover.gameObject.SetActive(true);
         }
 
         if (health >= maxHealth)

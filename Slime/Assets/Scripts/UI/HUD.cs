@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class HUD : MonoBehaviour
 {
-    public enum InfoType { Exp, Level, Score, Time, Health, None}
+    public enum InfoType { Exp, Level, Score, Time, Health, ResultScore}
     public InfoType type;
     GameObject obj;
 
@@ -56,6 +56,9 @@ public class HUD : MonoBehaviour
                 float CurHp = obj.GetComponent<SlimeManager>().health;
                 float MaxHp = obj.GetComponent<SlimeManager>().maxHealth;
                 mySlider.value = CurHp / MaxHp;
+                break;
+            case InfoType.ResultScore:
+                myText.text = string.Format("Score : {0:F0}", obj.GetComponent<SlimeManager>().score);
                 break;
         }   
     }

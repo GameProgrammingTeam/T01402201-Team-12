@@ -9,6 +9,7 @@ TagManager:
   - Attack
   - Attacker
   - VirusSlimeSpawner
+  - Jelly
   layers:
   - Default
   - TransparentFX
@@ -45,4 +46,10 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: UI
+    uniqueID: 526382431
+    locked: 0
+  - name: Back
+    uniqueID: 3778166575
     locked: 0
