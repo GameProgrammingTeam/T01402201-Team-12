@@ -46,7 +46,7 @@ public class MapManager : MonoBehaviour
         height += (mapSize > 1) ? mapBottom.bounds.size.y : 0;
         height /= 2;
         float cameraHalfHeight = _camera.orthographicSize;
-        _maxY = height - cameraHalfHeight  - paddingTop;
+        _maxY = height - cameraHalfHeight - paddingTop;
         _minY = -height + cameraHalfHeight + paddingBottom;
     }
 
@@ -54,6 +54,7 @@ public class MapManager : MonoBehaviour
     {
         return _maxY;
     }
+
     public float GetMinY()
     {
         return _minY;
@@ -84,28 +85,37 @@ public class MapManager : MonoBehaviour
                 (cameraLeft <= mapRight && mapRight <= cameraRight))
             {
                 newMaps = newMaps.Append(_maps[i]).ToList();
+
+                if (mapPositionX <= createMapLeftMax)
+                {
+                    createMapLeftMax = mapPositionX;
+                }
+
+                if (createMapRightMax <= mapPositionX)
+                {
+                    createMapRightMax = mapPositionX;
+                }
+
+
+                if ((int)mapLeft != (int)mapRight)
+                {
+                    if (mapLeft <= cameraLeft && cameraLeft <= mapRight)
+                    {
+                        createMapLeft = false;
+                    }
+
+                    if (mapLeft <= cameraRight && cameraRight <= mapRight)
+                    {
+                        createMapRight = false;
+                    }
+                }
             }
             else
             {
                 Destroy(_maps[i].gameObject);
             }
-
-            if (mapPositionX <= createMapLeftMax)
-                createMapLeftMax = mapPositionX;
-            if (createMapRightMax <= mapPositionX)
-                createMapRightMax = mapPositionX;
-
-            if (mapLeft <= cameraLeft && cameraLeft <= mapRight)
-            {
-                createMapLeft = false;
-            }
-
-            if (mapLeft <= cameraRight && cameraRight <= mapRight)
-            {
-                createMapRight = false;
-            }
         }
-
+        
         _maps = newMaps;
 
         if (createMapLeft)
