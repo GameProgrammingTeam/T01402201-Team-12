@@ -5378,6 +5378,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 448475233}
     - target: {fileID: 880913889017853580, guid: 113f6975949f6460b90bbcb695a6306d, type: 3}
+      propertyPath: moveSpeed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 880913889017853580, guid: 113f6975949f6460b90bbcb695a6306d, type: 3}
       propertyPath: nextExp.Array.size
       value: 30
       objectReference: {fileID: 0}

@@ -70,9 +70,9 @@ public class MapManager : MonoBehaviour
 
         List<Map> newMaps = new List<Map>();
         bool createMapLeft = true;
-        float createMapLeftMax = 0.0f;
+        float createMapLeftMax = _maps[0].transform.position.x;
         bool createMapRight = true;
-        float createMapRightMax = 0.0f;
+        float createMapRightMax = _maps[0].transform.position.x;
         for (int i = 0; i < _maps.Count; i++)
         {
             float mapPositionX = _maps[i].transform.position.x;
@@ -86,28 +86,23 @@ public class MapManager : MonoBehaviour
             {
                 newMaps = newMaps.Append(_maps[i]).ToList();
 
+
+                if (mapLeft <= cameraLeft && cameraLeft <= mapRight)
+                {
+                    createMapLeft = false;
+                }
+
+                if (mapLeft <= cameraRight && cameraRight <= mapRight)
+                {
+                    createMapRight = false;
+                }
                 if (mapPositionX <= createMapLeftMax)
                 {
                     createMapLeftMax = mapPositionX;
                 }
-
                 if (createMapRightMax <= mapPositionX)
                 {
                     createMapRightMax = mapPositionX;
-                }
-
-
-                if ((int)mapLeft != (int)mapRight)
-                {
-                    if (mapLeft <= cameraLeft && cameraLeft <= mapRight)
-                    {
-                        createMapLeft = false;
-                    }
-
-                    if (mapLeft <= cameraRight && cameraRight <= mapRight)
-                    {
-                        createMapRight = false;
-                    }
                 }
             }
             else
@@ -115,7 +110,7 @@ public class MapManager : MonoBehaviour
                 Destroy(_maps[i].gameObject);
             }
         }
-        
+
         _maps = newMaps;
 
         if (createMapLeft)

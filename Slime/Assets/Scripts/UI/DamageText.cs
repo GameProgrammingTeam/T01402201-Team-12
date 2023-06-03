@@ -14,7 +14,8 @@ public class DamageText : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector3 nextPos = Vector2.up * 20 * Time.deltaTime;
+        Vector3 pos = Vector2.up * 20;
+        Vector3 nextPos = pos * Time.deltaTime;
         range += nextPos.y;
         transform.position += nextPos;
         if (range >= maxRange)
