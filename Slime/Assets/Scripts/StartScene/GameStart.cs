@@ -21,8 +21,9 @@ public class GameStart : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
                 {
-            Invoke("InputGameStart", 4.5f);
             
+            Invoke("InputGameStart", 4.5f);
+            gameObject.GetComponent<FadeImage>().StartCoroutine("FadeOutStart");
         };
        
         
