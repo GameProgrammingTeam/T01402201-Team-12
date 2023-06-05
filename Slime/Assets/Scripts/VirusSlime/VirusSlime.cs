@@ -13,6 +13,7 @@ public class VirusSlime : MonoBehaviour
     [SerializeField] private int jellyExp;
     [SerializeField] private float jellyProbability;
     [SerializeField] private float jellyRemainTime;
+    [SerializeField] private GameObject impactEffectPrefab;
 
     private Camera _camera;
     private GameObject player;
@@ -53,6 +54,10 @@ public class VirusSlime : MonoBehaviour
 
             Vector3 pos = Camera.main.WorldToScreenPoint(other.transform.position);
             DamageTextController.Instance.CreateDamageText(pos, damage);
+            GameObject effect = Instantiate(impactEffectPrefab, transform.position, Quaternion.identity);
+            Destroy(effect, 1f);
+
+
             if (health <= 0)
             {
                 CreateJelly();
@@ -74,7 +79,8 @@ public class VirusSlime : MonoBehaviour
         }
     }
 
-    public void SetField(SlimeSet slime,
+    public void SetField(
+        SlimeSet slime,
         float moveSpeed,
         float health,
         float maxHealth,
@@ -84,7 +90,8 @@ public class VirusSlime : MonoBehaviour
         Jelly jellyPrefab,
         int jellyExp,
         float jellyProbability,
-        float jellyRemainTime)
+        float jellyRemainTime,
+        GameObject impactEffectPrefab)
     {
         this.slime = slime;
         this.moveSpeed = moveSpeed;
@@ -97,5 +104,6 @@ public class VirusSlime : MonoBehaviour
         this.jellyExp = jellyExp;
         this.jellyProbability = jellyProbability;
         this.jellyRemainTime = jellyRemainTime;
+        this.impactEffectPrefab = impactEffectPrefab;
     }
 }

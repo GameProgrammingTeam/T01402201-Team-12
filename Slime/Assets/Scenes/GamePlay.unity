@@ -1243,8 +1243,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adb30198aa32dd140b5750692dd48104, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 4
-  image: {fileID: 332229296}
 --- !u!114 &332229296
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4873,8 +4871,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adb30198aa32dd140b5750692dd48104, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 4
-  image: {fileID: 1414888362}
 --- !u!114 &1414888362
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5358,8 +5354,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adb30198aa32dd140b5750692dd48104, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 4
-  image: {fileID: 1860536447}
 --- !u!114 &1860536447
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6480,6 +6474,10 @@ PrefabInstance:
       propertyPath: jellyRemainTime
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 880913889017853581, guid: 113f6975949f6460b90bbcb695a6306d, type: 3}
+      propertyPath: impactEffectPrefab
+      value: 
+      objectReference: {fileID: 5112403345868107898, guid: 6f34ef0d986e9db4199cf75805f79753, type: 3}
     - target: {fileID: 880913889017853581, guid: 113f6975949f6460b90bbcb695a6306d, type: 3}
       propertyPath: probabilities.Array.size
       value: 2

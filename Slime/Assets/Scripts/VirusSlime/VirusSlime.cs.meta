@@ -3,7 +3,9 @@ guid: 7fc5d905fec6a4f7da887045eee81395
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - jellyPrefab: {instanceID: 0}
+  - impactEffectPrefab: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
