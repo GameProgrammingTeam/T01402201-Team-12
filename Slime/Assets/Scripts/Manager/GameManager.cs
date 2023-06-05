@@ -14,6 +14,11 @@ public class GameManager : MonoBehaviour
     public float gameTime;
     public float maxGameTime = 2 * 10f;
 
+    private void Awake()
+    {
+        Time.timeScale = 0;
+    }
+
     void Start()
     {
         slimeManager = gameObject.GetComponent<SlimeManager>();
@@ -26,6 +31,11 @@ public class GameManager : MonoBehaviour
         gameTime += Time.deltaTime;
         manageVirusSlime();
     }
+
+    public void StartTime()
+    {
+        Time.timeScale = 1;
+    } 
 
     private void manageVirusSlime()
     {
