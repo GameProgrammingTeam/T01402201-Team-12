@@ -192,7 +192,7 @@ public class SlimeManager : MonoBehaviour
         switch (_statusSets[choiceNum - 1])
         {
             case StatusSet.MoveSpeed:
-                result = string.Format("Move Speed Lv.{0:F0}", _damageLv + 1);
+                result = string.Format("Move Speed Lv.{0:F0}", _moveSpeedLv + 1);
                 break;
             case StatusSet.AttackSpeed:
                 result = string.Format("Attack Speed Lv.{0:F0}", _attackSpeedLv + 1);
