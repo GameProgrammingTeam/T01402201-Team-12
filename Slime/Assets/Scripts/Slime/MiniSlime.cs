@@ -7,7 +7,7 @@ public class MiniSlime : MonoBehaviour
     [SerializeField] private SlimeManager slimeManager;
 
     [SerializeField] private SlimeSet slime;
-    [SerializeField] private Attacker attackerPrefab;
+    [SerializeField] private MiniSlimeAttacker miniSlimeAttackerPrefab;
     [SerializeField] public Attack attackPrefab;
     [SerializeField] private float moveSpeed;
     [SerializeField] public float attackSpeed;
@@ -18,7 +18,7 @@ public class MiniSlime : MonoBehaviour
 
     private GameObject player;
     private Animator _animator;
-    private Attacker _attacker;
+    private MiniSlimeAttacker _attacker;
     private SlimeMovement _movement;
 
     void Start()
@@ -53,7 +53,7 @@ public class MiniSlime : MonoBehaviour
     // Attacker 생성
     void CreateAttacker()
     {
-        _attacker = Instantiate(attackerPrefab);
+        _attacker = Instantiate(miniSlimeAttackerPrefab);
         _attacker.transform.localScale = Vector3.one;
         _attacker.SetSlime(gameObject);
     }
@@ -63,13 +63,13 @@ public class MiniSlime : MonoBehaviour
     {
         if (!ReferenceEquals(slimeManager, null))
         {
-            if (slimeManager.slime != slime)
+            if (slimeManager.miniSlime != slime)
             {
-                slime = slimeManager.slime;
+                slime = slimeManager.miniSlime;
                 UpdateAssets();
             }
             
-            attackerPrefab = slimeManager.miniSlimeAttackerPrefab;
+            miniSlimeAttackerPrefab = slimeManager.miniSlimeAttackerPrefab;
             attackPrefab = slimeManager.miniSlimeAttackPrefab;
             moveSpeed = slimeManager.miniSlimeMoveSpeed;
             attackSpeed = slimeManager.miniSlimeAttackSpeed;

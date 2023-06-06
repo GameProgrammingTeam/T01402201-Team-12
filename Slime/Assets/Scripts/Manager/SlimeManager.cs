@@ -27,7 +27,7 @@ public class SlimeManager : MonoBehaviour
     [SerializeField] public bool hasMiniSlime;
     [SerializeField] public MiniSlime miniSlimePrefab;
     [SerializeField] public SlimeSet miniSlime;
-    [SerializeField] public Attacker miniSlimeAttackerPrefab;
+    [SerializeField] public MiniSlimeAttacker miniSlimeAttackerPrefab;
     [SerializeField] public Attack miniSlimeAttackPrefab;
     [SerializeField] public float miniSlimeMoveSpeed;
     [SerializeField] public float miniSlimeAttackSpeed;
@@ -170,7 +170,7 @@ public class SlimeManager : MonoBehaviour
 
     void UpgradeMiniSlime()
     {
-        print("upgrade miniSlime");
+       
     }
 
     public void LevelUp()
