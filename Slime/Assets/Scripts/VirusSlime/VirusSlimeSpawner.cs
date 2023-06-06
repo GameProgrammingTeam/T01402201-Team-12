@@ -21,6 +21,10 @@ public class VirusSlimeSpawner : MonoBehaviour
     [SerializeField] private float jellyProbability;
     [SerializeField] private float jellyRemainTime;
     [SerializeField] private GameObject impactEffectPrefab;
+    
+    [SerializeField] private MiniSlimeItem miniSlimeItemPrefab;
+    [SerializeField] private float miniSlimeItemProbability;
+    [SerializeField] private float miniSlimeItemRemainTime;
 
     private float _currentTime = 0.0f;
 
@@ -107,6 +111,9 @@ public class VirusSlimeSpawner : MonoBehaviour
             jellyExp,
             jellyProbability,
             jellyRemainTime,
+            miniSlimeItemPrefab,
+            miniSlimeItemProbability,
+            miniSlimeItemRemainTime,
             impactEffectPrefab);
     }
 
@@ -136,6 +143,11 @@ public class VirusSlimeSpawner : MonoBehaviour
             jellyExp = virusSlimeManager.jellyExp;
             jellyProbability = virusSlimeManager.jellyProbability;
             jellyRemainTime = virusSlimeManager.jellyRemainTime;
+            
+            miniSlimeItemPrefab = virusSlimeManager.miniSlimeItemPrefab;
+            miniSlimeItemProbability = virusSlimeManager.miniSlimeItemProbability;
+            miniSlimeItemRemainTime = virusSlimeManager.miniSlimeItemRemainTime;
+            
             impactEffectPrefab = virusSlimeManager.impactEffectPrefab;
         }
 

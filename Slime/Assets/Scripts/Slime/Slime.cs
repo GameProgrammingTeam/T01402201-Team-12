@@ -67,6 +67,11 @@ public class Slime : MonoBehaviour
             AddExp(exp);
             Destroy(other.gameObject);
         }
+
+        if (other.gameObject.CompareTag("MiniSlimeItem"))
+        {
+            
+        }
     }
 
     private void AddHealth(float value)

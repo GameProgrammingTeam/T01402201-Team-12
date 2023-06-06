@@ -20,6 +20,11 @@ public class VirusSlimeManager : MonoBehaviour
     [SerializeField] public int jellyExp;
     [SerializeField] public float jellyProbability;
     [SerializeField] public float jellyRemainTime;
+    
+    [SerializeField] public MiniSlimeItem miniSlimeItemPrefab;
+    [SerializeField] public float miniSlimeItemProbability;
+    [SerializeField] public float miniSlimeItemRemainTime;
+    
     [SerializeField] public GameObject impactEffectPrefab;
 
     private VirusSlimeSpawner virusSlimeSpawnerLeft;

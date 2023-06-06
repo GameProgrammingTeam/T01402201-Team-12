@@ -15,6 +15,10 @@ public class VirusSlime : MonoBehaviour
     [SerializeField] private float jellyRemainTime;
     [SerializeField] private GameObject impactEffectPrefab;
 
+    [SerializeField] private MiniSlimeItem miniSlimeItemPrefab;
+    [SerializeField] private float miniSlimeItemProbability;
+    [SerializeField] private float miniSlimeItemRemainTime;
+    
     private Camera _camera;
     private GameObject player;
     private SlimeMovement movement;
@@ -61,6 +65,7 @@ public class VirusSlime : MonoBehaviour
             if (health <= 0)
             {
                 CreateJelly();
+                CreateMiniSlimeItem();
                 Destroy(gameObject);
                 
             }
@@ -78,6 +83,16 @@ public class VirusSlime : MonoBehaviour
             jelly.SetValues(jellyRemainTime, jellyExp);
         }
     }
+    
+    private void CreateMiniSlimeItem()
+    {
+        if (Random.Range(0, 1.0f) <= miniSlimeItemProbability)
+        {
+            Quaternion rotation = Quaternion.Euler(Vector3.zero);
+            MiniSlimeItem miniSlimeItem = Instantiate(miniSlimeItemPrefab, transform.position, rotation);
+            miniSlimeItem.SetValues(miniSlimeItemRemainTime);
+        }
+    }
 
     public void SetField(
         SlimeSet slime,
@@ -91,6 +106,9 @@ public class VirusSlime : MonoBehaviour
         int jellyExp,
         float jellyProbability,
         float jellyRemainTime,
+        MiniSlimeItem miniSlimeItemPrefab,
+        float miniSlimeItemProbability,
+        float miniSlimeItemRemainTime,
         GameObject impactEffectPrefab)
     {
         this.slime = slime;
@@ -104,6 +122,9 @@ public class VirusSlime : MonoBehaviour
         this.jellyExp = jellyExp;
         this.jellyProbability = jellyProbability;
         this.jellyRemainTime = jellyRemainTime;
+        this.miniSlimeItemPrefab = miniSlimeItemPrefab;
+        this.miniSlimeItemProbability = miniSlimeItemProbability;
+        this.miniSlimeItemRemainTime = miniSlimeItemRemainTime;
         this.impactEffectPrefab = impactEffectPrefab;
     }
 }

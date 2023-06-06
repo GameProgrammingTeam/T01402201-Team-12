@@ -10,6 +10,8 @@ TagManager:
   - Attacker
   - VirusSlimeSpawner
   - Jelly
+  - FxTemporaire
+  - MiniSlime
   layers:
   - Default
   - TransparentFX
