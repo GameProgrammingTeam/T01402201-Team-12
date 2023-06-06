@@ -1067,8 +1067,9 @@ GameObject:
   - component: {fileID: 172645879}
   - component: {fileID: 172645878}
   - component: {fileID: 172645877}
+  - component: {fileID: 172645880}
   m_Layer: 5
-  m_Name: Character4
+  m_Name: Character3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1189,6 +1190,18 @@ MonoBehaviour:
           m_StringArgument: '"FadeInStart"'
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 172645880}
+        m_TargetAssemblyTypeName: SelectSlime, Assembly-CSharp
+        m_MethodName: SelectAspect
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &172645878
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1227,6 +1240,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 172645875}
   m_CullTransparentMesh: 1
+--- !u!114 &172645880
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 172645875}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfb88ba423b3c444db65272b44016044, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slimeManager: {fileID: 423297612}
+  slime: 46
 --- !u!1 &205502492
 GameObject:
   m_ObjectHideFlags: 0
@@ -1950,6 +1977,7 @@ GameObject:
   - component: {fileID: 360521011}
   - component: {fileID: 360521010}
   - component: {fileID: 360521009}
+  - component: {fileID: 360521012}
   m_Layer: 5
   m_Name: Character0
   m_TagString: Untagged
@@ -2072,10 +2100,10 @@ MonoBehaviour:
           m_StringArgument: '"FadeInStart"'
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 423297612}
-        m_TargetAssemblyTypeName: UnityEngine.Object, UnityEngine
-        m_MethodName: set_name
-        m_Mode: 5
+      - m_Target: {fileID: 360521012}
+        m_TargetAssemblyTypeName: SelectSlime, Assembly-CSharp
+        m_MethodName: SelectAspect
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2122,6 +2150,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 360521007}
   m_CullTransparentMesh: 1
+--- !u!114 &360521012
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 360521007}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfb88ba423b3c444db65272b44016044, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slimeManager: {fileID: 423297612}
+  slime: 0
 --- !u!1 &366037851
 GameObject:
   m_ObjectHideFlags: 0
@@ -2839,6 +2881,10 @@ PrefabInstance:
       propertyPath: slime
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 499574157809568748, guid: 78244b793f2094fb4b7716375f2557d9, type: 3}
+      propertyPath: selectslime
+      value: 
+      objectReference: {fileID: 360521012}
     - target: {fileID: 499574157809568748, guid: 78244b793f2094fb4b7716375f2557d9, type: 3}
       propertyPath: slimeManager
       value: 
@@ -5642,8 +5688,9 @@ GameObject:
   - component: {fileID: 1112998525}
   - component: {fileID: 1112998524}
   - component: {fileID: 1112998523}
+  - component: {fileID: 1112998526}
   m_Layer: 5
-  m_Name: Character3
+  m_Name: Character2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5764,6 +5811,18 @@ MonoBehaviour:
           m_StringArgument: '"FadeInStart"'
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 1112998526}
+        m_TargetAssemblyTypeName: SelectSlime, Assembly-CSharp
+        m_MethodName: SelectAspect
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &1112998524
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5802,6 +5861,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1112998521}
   m_CullTransparentMesh: 1
+--- !u!114 &1112998526
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1112998521}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfb88ba423b3c444db65272b44016044, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slimeManager: {fileID: 423297612}
+  slime: 38
 --- !u!1 &1115480399
 GameObject:
   m_ObjectHideFlags: 0
@@ -5967,6 +6040,7 @@ GameObject:
   - component: {fileID: 1178737736}
   - component: {fileID: 1178737735}
   - component: {fileID: 1178737734}
+  - component: {fileID: 1178737737}
   m_Layer: 5
   m_Name: Character1
   m_TagString: Untagged
@@ -6089,6 +6163,18 @@ MonoBehaviour:
           m_StringArgument: '"FadeInStart"'
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 1178737737}
+        m_TargetAssemblyTypeName: SelectSlime, Assembly-CSharp
+        m_MethodName: SelectAspect
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &1178737735
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6127,6 +6213,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1178737732}
   m_CullTransparentMesh: 1
+--- !u!114 &1178737737
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1178737732}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfb88ba423b3c444db65272b44016044, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slimeManager: {fileID: 423297612}
+  slime: 18
 --- !u!1 &1185673777
 GameObject:
   m_ObjectHideFlags: 0
@@ -7088,6 +7188,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1629151314 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 499574157809568749, guid: 78244b793f2094fb4b7716375f2557d9, type: 3}
+  m_PrefabInstance: {fileID: 460754765}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1629151322
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1629151314}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2843c1bfd7abe2e419eb9c9823b50ec1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FadePannel: {fileID: 1629151314}
+  C: 1
 --- !u!1 &1731777996
 GameObject:
   m_ObjectHideFlags: 0
@@ -8651,6 +8770,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 880913889017853577, guid: 113f6975949f6460b90bbcb695a6306d, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 880913889017853577, guid: 113f6975949f6460b90bbcb695a6306d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -8668,15 +8791,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 880913889017853577, guid: 113f6975949f6460b90bbcb695a6306d, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 880913889017853577, guid: 113f6975949f6460b90bbcb695a6306d, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 880913889017853577, guid: 113f6975949f6460b90bbcb695a6306d, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 880913889017853577, guid: 113f6975949f6460b90bbcb695a6306d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -8690,6 +8813,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 880913889017853580, guid: 113f6975949f6460b90bbcb695a6306d, type: 3}
+      propertyPath: Slime
+      value: 
+      objectReference: {fileID: 1629151314}
     - target: {fileID: 880913889017853580, guid: 113f6975949f6460b90bbcb695a6306d, type: 3}
       propertyPath: slime
       value: 0

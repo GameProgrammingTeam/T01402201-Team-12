@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
 
     public float gameTime;
     public float maxGameTime = 2 * 10f;
-
+    
     private void Awake()
     {
         Time.timeScale = 0;

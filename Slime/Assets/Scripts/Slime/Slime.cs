@@ -14,7 +14,7 @@ public class Slime : MonoBehaviour
     [SerializeField] public float damage;
     [SerializeField] public float speed;
     [SerializeField] public float range;
-
+    [SerializeField] public SelectSlime selectslime;
     [SerializeField] public float immuneTime;
     [SerializeField] public bool immune;
     private float _currentImmuneTime;
@@ -104,7 +104,7 @@ public class Slime : MonoBehaviour
     }
 
     // 슬라임 외형 변경
-    void UpdateAssets()
+    public void UpdateAssets()
     {
         var resource = "SlimeAnimation/SlimeAnimationOverrideController/" + slime;
         _animator.runtimeAnimatorController = (RuntimeAnimatorController)Resources.Load(resource);
@@ -122,11 +122,25 @@ public class Slime : MonoBehaviour
     {
         if (!ReferenceEquals(slimeManager, null))
         {
-            if (slimeManager.slime != slime)
-            {
-                slime = slimeManager.slime;
+                //slime = slimeManager.slime;
+                switch (slimeManager.PlayerID)
+                {
+                    case 0:
+                        slime = SlimeSet.Blue;
+                        break;
+                    case 18:
+                        slime = SlimeSet.Fire;
+                        break;
+                    case 38:
+                        slime = SlimeSet.Sand;
+                        break;
+                    case 46:
+                        slime = SlimeSet.Vine;
+                        break;
+                }
+                
                 UpdateAssets();
-            }
+            
 
             attackerPrefab = slimeManager.attackerPrefab;
             attackPrefab = slimeManager.attackPrefab;

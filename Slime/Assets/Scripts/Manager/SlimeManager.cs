@@ -31,6 +31,9 @@ public class SlimeManager : MonoBehaviour
     private GameManager _gameManager;
     private GameObject _slimeObject;
     public GameObject Gameover;
+    public GameObject Slime;
+    public int PlayerID;
+    
 
     private int _moveSpeedLv = 0;
     private int _attackSpeedLv = 0;
@@ -116,6 +119,7 @@ public class SlimeManager : MonoBehaviour
         if (health <= 0)
         {
             health = 0;
+            moveSpeed = 0;
             Gameover.gameObject.SetActive(true);
         }
 
