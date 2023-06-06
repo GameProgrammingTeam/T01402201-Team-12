@@ -12,6 +12,7 @@ TagManager:
   - Jelly
   - FxTemporaire
   - MiniSlime
+  - MiniSlimeItem
   layers:
   - Default
   - TransparentFX

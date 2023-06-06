@@ -7,8 +7,7 @@ public class MiniSlime : MonoBehaviour
     [SerializeField] private SlimeManager slimeManager;
 
     [SerializeField] private SlimeSet slime;
-    [SerializeField] private Slime parentSlime;
-    [SerializeField] private Attacker attackerPrefab;
+    [SerializeField] private MiniSlimeAttacker miniSlimeAttackerPrefab;
     [SerializeField] public Attack attackPrefab;
     [SerializeField] private float moveSpeed;
     [SerializeField] public float attackSpeed;
@@ -17,12 +16,14 @@ public class MiniSlime : MonoBehaviour
     [SerializeField] public float range;
     [SerializeField] public float distance = 1.0f;
 
+    private GameObject player;
     private Animator _animator;
-    private Attacker _attacker;
+    private MiniSlimeAttacker _attacker;
     private SlimeMovement _movement;
 
     void Start()
     {
+        player = GameObject.FindWithTag("Slime");
         _animator = GetComponent<Animator>();
         _movement = GetComponent<SlimeMovement>();
         UpdateAssets();
@@ -33,7 +34,7 @@ public class MiniSlime : MonoBehaviour
     {
         SetValues();
         Vector2 currentPosition = transform.position;
-        Vector2 slimePosition = parentSlime.transform.position;
+        Vector2 slimePosition = player.transform.position;
         
         if (Vector2.Distance(currentPosition, slimePosition) > distance)
         {
@@ -52,7 +53,7 @@ public class MiniSlime : MonoBehaviour
     // Attacker 생성
     void CreateAttacker()
     {
-        _attacker = Instantiate(attackerPrefab);
+        _attacker = Instantiate(miniSlimeAttackerPrefab);
         _attacker.transform.localScale = Vector3.one;
         _attacker.SetSlime(gameObject);
     }
@@ -62,26 +63,28 @@ public class MiniSlime : MonoBehaviour
     {
         if (!ReferenceEquals(slimeManager, null))
         {
-            if (slimeManager.slime != slime)
+            if (slimeManager.miniSlime != slime)
             {
-                slime = slimeManager.slime;
+                slime = slimeManager.miniSlime;
                 UpdateAssets();
             }
-
-            attackerPrefab = slimeManager.attackerPrefab;
-            attackPrefab = slimeManager.attackPrefab;
+            
+            miniSlimeAttackerPrefab = slimeManager.miniSlimeAttackerPrefab;
+            attackPrefab = slimeManager.miniSlimeAttackPrefab;
             moveSpeed = slimeManager.moveSpeed;
-            attackSpeed = slimeManager.attackSpeed;
-            damage = slimeManager.damage;
-            speed = slimeManager.speed;
-            range = slimeManager.range;
+            attackSpeed = slimeManager.miniSlimeAttackSpeed;
+            damage = slimeManager.miniSlimeDamage;
+            speed = slimeManager.miniSlimeSpeed;
+            range = slimeManager.miniSlimeRange;
+            distance = slimeManager.miniSlimeDistance;
         }
     }
 
     // gameManager 연결
-    public void SetParentSlime(Slime parent)
+    public void SetSlimeManager(GameObject slimeManager)
     {
-        this.parentSlime = parent;
-        transform.SetParent(parent.transform);
+        print( slimeManager.GetComponent<SlimeManager>());
+        this.slimeManager = slimeManager.GetComponent<SlimeManager>();
+        SetValues();
     }
 }
