@@ -7,7 +7,6 @@ public class MiniSlime : MonoBehaviour
     [SerializeField] private SlimeManager slimeManager;
 
     [SerializeField] private SlimeSet slime;
-    [SerializeField] private Slime parentSlime;
     [SerializeField] private Attacker attackerPrefab;
     [SerializeField] public Attack attackPrefab;
     [SerializeField] private float moveSpeed;
@@ -17,12 +16,14 @@ public class MiniSlime : MonoBehaviour
     [SerializeField] public float range;
     [SerializeField] public float distance = 1.0f;
 
+    private GameObject player;
     private Animator _animator;
     private Attacker _attacker;
     private SlimeMovement _movement;
 
     void Start()
     {
+        player = GameObject.FindWithTag("Slime");
         _animator = GetComponent<Animator>();
         _movement = GetComponent<SlimeMovement>();
         UpdateAssets();
@@ -33,7 +34,7 @@ public class MiniSlime : MonoBehaviour
     {
         SetValues();
         Vector2 currentPosition = transform.position;
-        Vector2 slimePosition = parentSlime.transform.position;
+        Vector2 slimePosition = player.transform.position;
         
         if (Vector2.Distance(currentPosition, slimePosition) > distance)
         {
@@ -67,21 +68,23 @@ public class MiniSlime : MonoBehaviour
                 slime = slimeManager.slime;
                 UpdateAssets();
             }
-
-            attackerPrefab = slimeManager.attackerPrefab;
-            attackPrefab = slimeManager.attackPrefab;
-            moveSpeed = slimeManager.moveSpeed;
-            attackSpeed = slimeManager.attackSpeed;
-            damage = slimeManager.damage;
-            speed = slimeManager.speed;
-            range = slimeManager.range;
+            
+            attackerPrefab = slimeManager.miniSlimeAttackerPrefab;
+            attackPrefab = slimeManager.miniSlimeAttackPrefab;
+            moveSpeed = slimeManager.miniSlimeMoveSpeed;
+            attackSpeed = slimeManager.miniSlimeAttackSpeed;
+            damage = slimeManager.miniSlimeDamage;
+            speed = slimeManager.miniSlimeSpeed;
+            range = slimeManager.miniSlimeRange;
+            distance = slimeManager.miniSlimeDistance;
         }
     }
 
     // gameManager 연결
-    public void SetParentSlime(Slime parent)
+    public void SetSlimeManager(GameObject slimeManager)
     {
-        this.parentSlime = parent;
-        transform.SetParent(parent.transform);
+        print( slimeManager.GetComponent<SlimeManager>());
+        this.slimeManager = slimeManager.GetComponent<SlimeManager>();
+        SetValues();
     }
 }

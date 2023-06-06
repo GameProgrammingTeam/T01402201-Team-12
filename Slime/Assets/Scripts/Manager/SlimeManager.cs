@@ -22,6 +22,19 @@ public class SlimeManager : MonoBehaviour
     [SerializeField] public float range;
     [SerializeField] public float immuneTime;
     [SerializeField] public bool immune;
+    
+    
+    [SerializeField] public bool hasMiniSlime;
+    [SerializeField] public MiniSlime miniSlimePrefab;
+    [SerializeField] public SlimeSet miniSlime;
+    [SerializeField] public Attacker miniSlimeAttackerPrefab;
+    [SerializeField] public Attack miniSlimeAttackPrefab;
+    [SerializeField] public float miniSlimeMoveSpeed;
+    [SerializeField] public float miniSlimeAttackSpeed;
+    [SerializeField] public float miniSlimeDamage;
+    [SerializeField] public float miniSlimeSpeed;
+    [SerializeField] public float miniSlimeRange;
+    [SerializeField] public float miniSlimeDistance;
 
     [SerializeField] public int exp;
     [SerializeField] public int[] nextExp;
@@ -74,19 +87,15 @@ public class SlimeManager : MonoBehaviour
             {
                 case "MoveSpeed":
                     moveSpeedImage = statusSprite;
-                    print(statusSprite.name);
                     break;
                 case "AttackSpeed":
                     attackSpeedImage = statusSprite;
-                    print(statusSprite.name);
                     break;
                 case "Damage":
                     damageImage = statusSprite;
-                    print(statusSprite.name);
                     break;
                 case "MaxHealth":
                     maxHealthImage = statusSprite;
-                    print(statusSprite.name);
                     break;
             }
         }
@@ -142,6 +151,26 @@ public class SlimeManager : MonoBehaviour
             exp = 0;
             LevelUp();
         }
+    }
+
+    public void AddMiniSlime(Transform transform)
+    {
+        if (!hasMiniSlime)
+        {
+            hasMiniSlime = true;
+            Quaternion rotation = Quaternion.Euler(Vector3.zero);
+            MiniSlime miniSlime = Instantiate(miniSlimePrefab, transform.position, rotation);
+            miniSlime.SetSlimeManager(gameObject);
+        }
+        else
+        {
+            UpgradeMiniSlime();
+        }
+    }
+
+    void UpgradeMiniSlime()
+    {
+        print("upgrade miniSlime");
     }
 
     public void LevelUp()

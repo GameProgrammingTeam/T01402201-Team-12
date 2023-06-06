@@ -17,6 +17,8 @@ public class Slime : MonoBehaviour
 
     [SerializeField] public float immuneTime;
     [SerializeField] public bool immune;
+
+
     private float _currentImmuneTime;
 
     private Animator _animator;
@@ -70,7 +72,8 @@ public class Slime : MonoBehaviour
 
         if (other.gameObject.CompareTag("MiniSlimeItem"))
         {
-            
+            AddMiniSlime(other.gameObject.transform);  
+            Destroy(other.gameObject);
         }
     }
 
@@ -100,6 +103,14 @@ public class Slime : MonoBehaviour
         if (!ReferenceEquals(slimeManager, null))
         {
             slimeManager.AddExp(value);
+        }
+    }
+
+    private void AddMiniSlime(Transform transform)
+    {
+        if (!ReferenceEquals(slimeManager, null))
+        {
+            slimeManager.AddMiniSlime(transform);
         }
     }
 
@@ -139,6 +150,7 @@ public class Slime : MonoBehaviour
             range = slimeManager.range;
             immuneTime = slimeManager.immuneTime;
             immune = slimeManager.immune;
+            
         }
     }
 
