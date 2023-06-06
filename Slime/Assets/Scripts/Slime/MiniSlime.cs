@@ -71,7 +71,7 @@ public class MiniSlime : MonoBehaviour
             
             miniSlimeAttackerPrefab = slimeManager.miniSlimeAttackerPrefab;
             attackPrefab = slimeManager.miniSlimeAttackPrefab;
-            moveSpeed = slimeManager.miniSlimeMoveSpeed;
+            moveSpeed = slimeManager.moveSpeed;
             attackSpeed = slimeManager.miniSlimeAttackSpeed;
             damage = slimeManager.miniSlimeDamage;
             speed = slimeManager.miniSlimeSpeed;

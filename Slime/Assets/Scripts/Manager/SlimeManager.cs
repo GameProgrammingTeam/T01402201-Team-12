@@ -29,7 +29,6 @@ public class SlimeManager : MonoBehaviour
     [SerializeField] public SlimeSet miniSlime;
     [SerializeField] public MiniSlimeAttacker miniSlimeAttackerPrefab;
     [SerializeField] public Attack miniSlimeAttackPrefab;
-    [SerializeField] public float miniSlimeMoveSpeed;
     [SerializeField] public float miniSlimeAttackSpeed;
     [SerializeField] public float miniSlimeDamage;
     [SerializeField] public float miniSlimeSpeed;
@@ -170,7 +169,9 @@ public class SlimeManager : MonoBehaviour
 
     void UpgradeMiniSlime()
     {
-       
+        miniSlimeAttackSpeed *= 1.1f;
+        miniSlimeDamage *= 1.1f;
+        miniSlimeSpeed *= 1.1f;
     }
 
     public void LevelUp()
