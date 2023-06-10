@@ -20,8 +20,8 @@ public class GameStart : MonoBehaviour
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
-                {
-            
+        {
+            AudioManager.instance.PlaySfx(AudioManager.Sfx.Gamestart);
             Invoke("InputGameStart", 4.5f);
             gameObject.GetComponent<FadeImage>().StartCoroutine("FadeOutStart");
         };

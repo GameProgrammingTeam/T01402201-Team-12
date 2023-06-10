@@ -18,6 +18,8 @@ public class AudioManager : MonoBehaviour
     int channelIndex;
     AudioSource[] sfxPlayers;
 
+    public enum Sfx {Click1,  Click2, Click3, Clickback, Retry, Quite, Getgell, Getpet, Lvup, LvSelect, Attackpop, Spark, Gameover, Gamestart};
+
     void Awake()
     {
         instance = this;
@@ -45,7 +47,23 @@ public class AudioManager : MonoBehaviour
             sfxPlayers[i].playOnAwake = false;
             sfxPlayers[i].volume = sfxVolume;
         }
+    }
+    public void PlaySfx(Sfx sfx)
+    {
+        for (int i=0; i < sfxPlayers.Length; i++)
+        {
+            int loopIndex =  ( i + channelIndex) % sfxPlayers.Length;
+
+            if (sfxPlayers[loopIndex].isPlaying)
+                continue;
+
+            channelIndex = loopIndex;
+            sfxPlayers[loopIndex].clip = sfxClips[(int)sfx];
+            sfxPlayers[loopIndex].Play();
+            break;
+        }
 
     }
+
 }
 
