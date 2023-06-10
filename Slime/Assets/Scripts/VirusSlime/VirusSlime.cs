@@ -14,7 +14,7 @@ public class VirusSlime : MonoBehaviour
     [SerializeField] private float jellyProbability;
     [SerializeField] private float jellyRemainTime;
     [SerializeField] private GameObject impactEffectPrefab;
-    [SerializeField] private GameObject ElectricballHitRrefab;
+    [SerializeField] private GameObject ElectricballHitPrefab;
 
     [SerializeField] private MiniSlimeItem miniSlimeItemPrefab;
     [SerializeField] private float miniSlimeItemProbability;
@@ -81,7 +81,7 @@ public class VirusSlime : MonoBehaviour
 
             Vector3 pos = Camera.main.WorldToScreenPoint(other.transform.position);
             DamageTextController.Instance.CreateDamageText(pos, damage);
-            GameObject effect = Instantiate(impactEffectPrefab, transform.position, Quaternion.identity);
+            GameObject effect = Instantiate(ElectricballHitPrefab, transform.position, Quaternion.identity);
             Destroy(effect, 1f);
             if (health <= 0)
             {
@@ -128,7 +128,8 @@ public class VirusSlime : MonoBehaviour
         MiniSlimeItem miniSlimeItemPrefab,
         float miniSlimeItemProbability,
         float miniSlimeItemRemainTime,
-        GameObject impactEffectPrefab)
+        GameObject impactEffectPrefab,
+        GameObject ElectricballHitPrefab)
     {
         this.slime = slime;
         this.moveSpeed = moveSpeed;
@@ -145,5 +146,6 @@ public class VirusSlime : MonoBehaviour
         this.miniSlimeItemProbability = miniSlimeItemProbability;
         this.miniSlimeItemRemainTime = miniSlimeItemRemainTime;
         this.impactEffectPrefab = impactEffectPrefab;
+        this.ElectricballHitPrefab = ElectricballHitPrefab;
     }
 }

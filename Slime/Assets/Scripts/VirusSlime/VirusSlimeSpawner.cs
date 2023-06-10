@@ -115,7 +115,8 @@ public class VirusSlimeSpawner : MonoBehaviour
             miniSlimeItemPrefab,
             miniSlimeItemProbability,
             miniSlimeItemRemainTime,
-            impactEffectPrefab
+            impactEffectPrefab,
+            ElectricballHitPrefab
             );
     }
 
