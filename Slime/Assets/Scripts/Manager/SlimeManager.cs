@@ -13,6 +13,10 @@ public class SlimeManager : MonoBehaviour
     [SerializeField] public SlimeSet slime;
     [SerializeField] public Attacker attackerPrefab;
     [SerializeField] public Attack attackPrefab;
+    [SerializeField] public ElectricballGn ElectricballGnPrefab;
+    [SerializeField] public Electricball ElectricballPrefab;
+
+
     [SerializeField] public float moveSpeed;
     [SerializeField] public float health;
     [SerializeField] public float maxHealth;
@@ -22,8 +26,9 @@ public class SlimeManager : MonoBehaviour
     [SerializeField] public float range;
     [SerializeField] public float immuneTime;
     [SerializeField] public bool immune;
-    
-    
+    [SerializeField] public int count = 1;
+
+
     [SerializeField] public bool hasMiniSlime;
     [SerializeField] public MiniSlime miniSlimePrefab;
     [SerializeField] public SlimeSet miniSlime;
@@ -313,6 +318,8 @@ public class SlimeManager : MonoBehaviour
     {
         _attackSpeedLv += 1;
         attackSpeed *= 1.2f;
+        count++; // 번개 슬라임의 경우 공격속도 대신 개수를 늘림
+        
     }
 
     private void UpgradeDamage()

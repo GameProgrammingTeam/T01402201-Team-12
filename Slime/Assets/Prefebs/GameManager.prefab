@@ -86,7 +86,9 @@ MonoBehaviour:
   Levelexp: 10
   slime: 14
   attackerPrefab: {fileID: 3883073863883782132, guid: dca09aecdeaa24104b376be932ffcc0b, type: 3}
-  attackPrefab: {fileID: 7071995795188218340, guid: 0c69bd71980a642c29dc893b56a20c60, type: 3}
+  attackPrefab: {fileID: 0}
+  ElectricballGnPrefab: {fileID: 0}
+  ElectricballPrefab: {fileID: 0}
   moveSpeed: 10
   health: 10
   maxHealth: 100
@@ -96,11 +98,23 @@ MonoBehaviour:
   range: 20
   immuneTime: 1
   immune: 0
+  hasMiniSlime: 0
+  miniSlimePrefab: {fileID: 0}
+  miniSlime: 0
+  miniSlimeAttackerPrefab: {fileID: 0}
+  miniSlimeAttackPrefab: {fileID: 0}
+  miniSlimeAttackSpeed: 0
+  miniSlimeDamage: 0
+  miniSlimeSpeed: 0
+  miniSlimeRange: 0
+  miniSlimeDistance: 0
   exp: 0
   nextExp: 
   level: 0
   score: 0
   Gameover: {fileID: 0}
+  Slime: {fileID: 0}
+  PlayerID: 0
 --- !u!114 &880913889017853581
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -121,7 +135,6 @@ MonoBehaviour:
   - slime: 18
     probability: 1
   virusSlimePrefab: {fileID: 8195735074804966630, guid: 6c78e39d720304d5bbf873b3389f2d32, type: 3}
-  impactEffectPrefab: {fileID: 5112403345868107898, guid: 6f34ef0d986e9db4199cf75805f79753, type: 3}
   moveSpeed: 4
   health: 10
   maxHealth: 30
@@ -134,3 +147,8 @@ MonoBehaviour:
   jellyExp: 10
   jellyProbability: 1
   jellyRemainTime: 4
+  miniSlimeItemPrefab: {fileID: 0}
+  miniSlimeItemProbability: 0
+  miniSlimeItemRemainTime: 0
+  impactEffectPrefab: {fileID: 5112403345868107898, guid: 6f34ef0d986e9db4199cf75805f79753, type: 3}
+  ElectricballHitPrefab: {fileID: 0}

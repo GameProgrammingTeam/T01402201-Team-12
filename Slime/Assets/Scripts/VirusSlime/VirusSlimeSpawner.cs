@@ -21,7 +21,8 @@ public class VirusSlimeSpawner : MonoBehaviour
     [SerializeField] private float jellyProbability;
     [SerializeField] private float jellyRemainTime;
     [SerializeField] private GameObject impactEffectPrefab;
-    
+    [SerializeField] private GameObject ElectricballHitPrefab;
+
     [SerializeField] private MiniSlimeItem miniSlimeItemPrefab;
     [SerializeField] private float miniSlimeItemProbability;
     [SerializeField] private float miniSlimeItemRemainTime;
@@ -114,7 +115,8 @@ public class VirusSlimeSpawner : MonoBehaviour
             miniSlimeItemPrefab,
             miniSlimeItemProbability,
             miniSlimeItemRemainTime,
-            impactEffectPrefab);
+            impactEffectPrefab
+            );
     }
 
     public void SetVirusSlimeManager(GameObject virusSlimeManager)
@@ -149,6 +151,7 @@ public class VirusSlimeSpawner : MonoBehaviour
             miniSlimeItemRemainTime = virusSlimeManager.miniSlimeItemRemainTime;
             
             impactEffectPrefab = virusSlimeManager.impactEffectPrefab;
+            ElectricballHitPrefab = virusSlimeManager.ElectricballHitPrefab;
         }
 
         if (!randomDamage)

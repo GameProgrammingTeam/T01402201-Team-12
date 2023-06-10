@@ -7,6 +7,9 @@ public class Slime : MonoBehaviour
     [SerializeField] private SlimeSet slime;
     [SerializeField] private Attacker attackerPrefab;
     [SerializeField] public Attack attackPrefab;
+    [SerializeField] private ElectricballGn ElectricballGnPrefab;
+    [SerializeField] public Electricball ElectricballPrefab;
+
     [SerializeField] private float moveSpeed;
     [SerializeField] private float health;
     [SerializeField] public float maxHealth;
@@ -17,19 +20,21 @@ public class Slime : MonoBehaviour
     [SerializeField] public SelectSlime selectslime;
     [SerializeField] public float immuneTime;
     [SerializeField] public bool immune;
-    
+    [SerializeField] public int PlayerID;
     private float _currentImmuneTime;
+    [SerializeField] public int count;
 
     private Animator _animator;
     private Attacker _attacker;
+    private ElectricballGn _ElectricballGn;
     private SlimeMovement _movement;
 
     void Start()
     {
         _animator = GetComponent<Animator>();
         _movement = GetComponent<SlimeMovement>();
+        
         UpdateAssets();
-        CreateAttacker();
     }
 
     void Update()
@@ -122,10 +127,16 @@ public class Slime : MonoBehaviour
     }
 
     // Attacker 생성
-    void CreateAttacker()
+    public void CreateAttacker()
     {
         _attacker = Instantiate(attackerPrefab);
         _attacker.SetSlime(gameObject);
+    }
+
+    public void CreateElectricballGn()
+    {
+        _ElectricballGn = Instantiate(ElectricballGnPrefab);
+        _ElectricballGn.SetSlime(gameObject);
     }
 
     // gameManager의 값 변경시 적용
@@ -137,14 +148,25 @@ public class Slime : MonoBehaviour
                 switch (slimeManager.PlayerID)
                 {
                     case 0:
-                        slime = SlimeSet.Blue;
-                        break;
+                    slime = SlimeSet.Blue;
+                    attackerPrefab = slimeManager.attackerPrefab;
+                    attackPrefab = slimeManager.attackPrefab;
+                    //PlayerID = slimeManager.GetComponent<SlimeManager>().PlayerID;
+                    //CreateAttacker();
+                    break;
+
                     case 18:
                         slime = SlimeSet.Fire;
                         break;
-                    case 38:
-                        slime = SlimeSet.Sand;
-                        break;
+
+                    case 28:
+                    slime = SlimeSet.Lightning;
+                    ElectricballPrefab = slimeManager.ElectricballPrefab;
+                    ElectricballGnPrefab = slimeManager.ElectricballGnPrefab;
+                    //PlayerID = slimeManager.GetComponent<SlimeManager>().PlayerID;
+                    //CreateElectricballGn();
+                    break;
+
                     case 46:
                         slime = SlimeSet.Vine;
                         break;
@@ -153,8 +175,7 @@ public class Slime : MonoBehaviour
                 UpdateAssets();
             
 
-            attackerPrefab = slimeManager.attackerPrefab;
-            attackPrefab = slimeManager.attackPrefab;
+            
             moveSpeed = slimeManager.moveSpeed;
             health = slimeManager.health;
             maxHealth = slimeManager.maxHealth;
@@ -164,6 +185,7 @@ public class Slime : MonoBehaviour
             range = slimeManager.range;
             immuneTime = slimeManager.immuneTime;
             immune = slimeManager.immune;
+            count = slimeManager.count;
         }
     }
 

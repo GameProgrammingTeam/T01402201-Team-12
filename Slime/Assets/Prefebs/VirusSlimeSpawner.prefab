@@ -97,6 +97,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85627c05e725b413d86da596bb89e69d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  virusSlimeManager: {fileID: 0}
   spawnTime: 2
   spawnMaxCount: 4
   probabilities:
@@ -105,6 +106,18 @@ MonoBehaviour:
   virusSlimePrefab: {fileID: 8195735074804966630, guid: 6c78e39d720304d5bbf873b3389f2d32, type: 3}
   moveSpeed: 4
   health: 10
+  maxHealth: 0
+  minDamage: 0
+  randomDamage: 0
   damage: 0
   attackSpeed: 0
-  range: 0
+  destroyRange: 0
+  jellyPrefab: {fileID: 0}
+  jellyExp: 0
+  jellyProbability: 0
+  jellyRemainTime: 0
+  impactEffectPrefab: {fileID: 0}
+  ElectricballHitPrefab: {fileID: 0}
+  miniSlimeItemPrefab: {fileID: 0}
+  miniSlimeItemProbability: 0
+  miniSlimeItemRemainTime: 0

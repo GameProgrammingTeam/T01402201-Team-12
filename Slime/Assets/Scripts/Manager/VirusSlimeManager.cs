@@ -26,6 +26,7 @@ public class VirusSlimeManager : MonoBehaviour
     [SerializeField] public float miniSlimeItemRemainTime;
     
     [SerializeField] public GameObject impactEffectPrefab;
+    [SerializeField] public GameObject ElectricballHitPrefab;
 
     private VirusSlimeSpawner virusSlimeSpawnerLeft;
     private VirusSlimeSpawner virusSlimeSpawnerRight;

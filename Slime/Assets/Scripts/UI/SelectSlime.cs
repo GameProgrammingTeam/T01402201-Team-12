@@ -7,6 +7,7 @@ using UnityEngine;
 public class SelectSlime : MonoBehaviour
 {
     public SlimeManager slimeManager;
+    GameObject Slime;
     [SerializeField] public SlimeSet slime;
       
 
@@ -14,7 +15,7 @@ public class SelectSlime : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        Slime = GameObject.Find("Slime");
     }
 
     // Update is called once per frame
@@ -29,12 +30,15 @@ public class SelectSlime : MonoBehaviour
         {
             case SlimeSet.Blue:
                 slimeManager.PlayerID = 0;
+                Slime.GetComponent<Slime>().CreateAttacker();
                 break;
             case SlimeSet.Fire:
                 slimeManager.PlayerID = 18;
                 break;
-            case SlimeSet.Sand:
-                slimeManager.PlayerID = 38;
+            case SlimeSet.Lightning:
+                slimeManager.PlayerID = 28;
+                Slime.GetComponent<Slime>().CreateElectricballGn();
+
                 break;
             case SlimeSet.Vine:
                 slimeManager.PlayerID = 46;

@@ -14,6 +14,7 @@ public class VirusSlime : MonoBehaviour
     [SerializeField] private float jellyProbability;
     [SerializeField] private float jellyRemainTime;
     [SerializeField] private GameObject impactEffectPrefab;
+    [SerializeField] private GameObject ElectricballHitRrefab;
 
     [SerializeField] private MiniSlimeItem miniSlimeItemPrefab;
     [SerializeField] private float miniSlimeItemProbability;
@@ -72,6 +73,24 @@ public class VirusSlime : MonoBehaviour
 
             Destroy(other.gameObject);
         }
+
+        if (other.gameObject.CompareTag("Electricball"))
+        {
+            float damage = other.gameObject.GetComponent<Electricball>().damage;
+            health -= damage;
+
+            Vector3 pos = Camera.main.WorldToScreenPoint(other.transform.position);
+            DamageTextController.Instance.CreateDamageText(pos, damage);
+            GameObject effect = Instantiate(impactEffectPrefab, transform.position, Quaternion.identity);
+            Destroy(effect, 1f);
+            if (health <= 0)
+            {
+                CreateJelly();
+                CreateMiniSlimeItem();
+                Destroy(gameObject);
+            }
+        }
+
     }
 
     private void CreateJelly()

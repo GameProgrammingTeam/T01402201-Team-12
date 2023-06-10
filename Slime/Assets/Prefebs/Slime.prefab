@@ -30,7 +30,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 499574157809568749}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.51896787, y: 2.349361, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.2, y: 0.2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -148,15 +148,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 387396bd8418a4351a5194db1a8b61fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  slimeManager: {fileID: 0}
   slime: 0
   attackerPrefab: {fileID: 3883073863883782132, guid: dca09aecdeaa24104b376be932ffcc0b, type: 3}
   attackPrefab: {fileID: 7071995795188218340, guid: 0c69bd71980a642c29dc893b56a20c60, type: 3}
+  ElectricballGnPrefab: {fileID: 0}
+  ElectricballPrefab: {fileID: 0}
   moveSpeed: 10
   health: 1000
+  maxHealth: 0
   attackSpeed: 5
   damage: 50
   speed: 10
   range: 30
+  selectslime: {fileID: 0}
+  immuneTime: 0
+  immune: 0
+  PlayerID: 0
 --- !u!114 &499574157809568727
 MonoBehaviour:
   m_ObjectHideFlags: 0
