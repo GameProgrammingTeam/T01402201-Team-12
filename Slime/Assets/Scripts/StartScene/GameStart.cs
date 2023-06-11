@@ -26,8 +26,13 @@ public class GameStart : MonoBehaviour
             AudioManager.instance.PlayBgm(false);
             gameObject.GetComponent<FadeImage>().StartCoroutine("FadeOutStart");
         };
-       
-        
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+                Application.Quit();
+        }
+
+
     }
     public void InputGameStart()
     {
