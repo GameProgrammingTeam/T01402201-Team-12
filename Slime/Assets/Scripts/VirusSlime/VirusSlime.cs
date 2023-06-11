@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class VirusSlime : MonoBehaviour
@@ -15,6 +16,7 @@ public class VirusSlime : MonoBehaviour
     [SerializeField] private float jellyRemainTime;
     [SerializeField] private GameObject impactEffectPrefab;
     [SerializeField] private GameObject ElectricballHitPrefab;
+    [SerializeField] private GameObject FireballHitPrefab;
 
     [SerializeField] private MiniSlimeItem miniSlimeItemPrefab;
     [SerializeField] private float miniSlimeItemProbability;
@@ -23,6 +25,11 @@ public class VirusSlime : MonoBehaviour
     private Camera _camera;
     private GameObject player;
     private SlimeMovement movement;
+
+    public ParticleSystem ps;
+    List<ParticleSystem.Particle> inside = new List<ParticleSystem.Particle>();
+    public LayerMask layerMask;
+    public GameObject Explosion;
 
 
     // Start is called before the first frame update
@@ -35,6 +42,8 @@ public class VirusSlime : MonoBehaviour
         Animator animator = GetComponent<Animator>();
         animator.runtimeAnimatorController = (RuntimeAnimatorController)Resources.Load(resource);
         health = maxHealth;
+
+        //ps = GameObject.FindWithTag("Fireball").GetComponent<ParticleSystem>();
     }
 
     // Update is called once per frame
@@ -91,6 +100,8 @@ public class VirusSlime : MonoBehaviour
 
             Destroy(effect, 1f);
 
+
+
             if (health <= 0)
             {
                 CreateJelly();
@@ -99,6 +110,73 @@ public class VirusSlime : MonoBehaviour
             }
         }
 
+        if (other.gameObject.CompareTag("Fireball"))
+        {
+            float damage = other.gameObject.GetComponent<Fireball>().damage * 1.2f;
+            health -= damage;
+
+            Vector3 pos = Camera.main.WorldToScreenPoint(other.transform.position);
+            DamageTextController.Instance.CreateDamageText(pos, damage);
+            GameObject effect = Instantiate(FireballHitPrefab, transform.position, Quaternion.identity);
+            
+
+            AudioManager.instance.PlaySfx(AudioManager.Sfx.Fire);
+            GameObject Explosioneffect = Instantiate(Explosion, this.transform.position, Quaternion.identity);
+            Destroy(effect, 1f);
+            
+
+
+
+            if (health <= 0)
+            {
+                CreateJelly();
+                CreateMiniSlimeItem();
+                Destroy(gameObject);
+            }
+        }
+
+
+
+    }
+
+    private void OnParticleCollision(GameObject other) // 구현 실패 코드
+    {
+        if (other.gameObject.CompareTag("Fireball"))
+        {
+            float damage = other.gameObject.GetComponent<Fireball>().damage;
+            health -= damage;
+
+            Vector3 pos = Camera.main.WorldToScreenPoint(other.transform.position);
+            DamageTextController.Instance.CreateDamageText(pos, damage);
+            GameObject effect = Instantiate(FireballHitPrefab, transform.position, Quaternion.identity);
+
+
+            AudioManager.instance.PlaySfx(AudioManager.Sfx.Spark); // 
+
+            Destroy(effect, 1f);
+
+
+
+            if (health <= 0)
+            {
+                CreateJelly();
+                CreateMiniSlimeItem();
+                Destroy(gameObject);
+            }
+        }
+    }
+
+    private void OnParticleTrigger()
+    {
+        ps.GetTriggerParticles(ParticleSystemTriggerEventType.Inside, inside);
+        Collider[] colliders = Physics.OverlapSphere(transform.position, 5, layerMask);
+
+        for (int i = 0; i < colliders.Length; i++)
+        {
+            Rigidbody enemyRid = colliders[i].GetComponent<Rigidbody>();
+            enemyRid.AddExplosionForce(100, transform.position, 5);
+        }
+        
     }
 
     private void CreateJelly()
@@ -137,7 +215,9 @@ public class VirusSlime : MonoBehaviour
         float miniSlimeItemProbability,
         float miniSlimeItemRemainTime,
         GameObject impactEffectPrefab,
-        GameObject ElectricballHitPrefab)
+        GameObject ElectricballHitPrefab,
+        GameObject FireballHitPrefab,
+        GameObject Explosion)
     {
         this.slime = slime;
         this.moveSpeed = moveSpeed;
@@ -155,5 +235,7 @@ public class VirusSlime : MonoBehaviour
         this.miniSlimeItemRemainTime = miniSlimeItemRemainTime;
         this.impactEffectPrefab = impactEffectPrefab;
         this.ElectricballHitPrefab = ElectricballHitPrefab;
-    }
+        this.FireballHitPrefab = FireballHitPrefab;
+        this.Explosion = Explosion;
+}
 }

@@ -27,6 +27,8 @@ public class VirusSlimeManager : MonoBehaviour
     
     [SerializeField] public GameObject impactEffectPrefab;
     [SerializeField] public GameObject ElectricballHitPrefab;
+    [SerializeField] public GameObject FireballHitPrefab;
+    [SerializeField] public GameObject Explosion;
 
     private VirusSlimeSpawner virusSlimeSpawnerLeft;
     private VirusSlimeSpawner virusSlimeSpawnerRight;

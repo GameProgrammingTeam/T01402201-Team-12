@@ -19,7 +19,7 @@ public class AudioManager : MonoBehaviour
     int channelIndex;
     AudioSource[] sfxPlayers;
 
-    public enum Sfx {Click1,  Click2, Click3, Clickback, Retry, Quite, Getgell, Getpet, Lvup, LvSelect, Attackpop, Spark, Gameover = 14, Gamestart};
+    public enum Sfx {Click1,  Click2, Click3, Clickback, Retry, Quite, Getgell, Getpet, Lvup, LvSelect, Attackpop, Fire ,Spark, Gameover = 14, Gamestart};
 
     void Awake()
     {

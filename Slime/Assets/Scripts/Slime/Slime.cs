@@ -9,6 +9,10 @@ public class Slime : MonoBehaviour
     [SerializeField] public Attack attackPrefab;
     [SerializeField] private ElectricballGn ElectricballGnPrefab;
     [SerializeField] public Electricball ElectricballPrefab;
+    [SerializeField] private FireballGn FireballGnPrefab;
+    [SerializeField] public Fireball FireballPrefab;
+
+
 
     [SerializeField] private float moveSpeed;
     [SerializeField] private float health;
@@ -27,6 +31,7 @@ public class Slime : MonoBehaviour
     private Animator _animator;
     private Attacker _attacker;
     private ElectricballGn _ElectricballGn;
+    private FireballGn _FireballGn;
     private SlimeMovement _movement;
 
     void Start()
@@ -139,6 +144,11 @@ public class Slime : MonoBehaviour
         _ElectricballGn.SetSlime(gameObject);
     }
 
+    public void CreateFireballGn()
+    {
+       _FireballGn = Instantiate(FireballGnPrefab);
+       _FireballGn.SetSlime(gameObject);
+    }
     // gameManager의 값 변경시 적용
     void SetValues()
     {
@@ -156,8 +166,10 @@ public class Slime : MonoBehaviour
                     break;
 
                     case 18:
-                        slime = SlimeSet.Fire;
-                        break;
+                    slime = SlimeSet.Fire;
+                    FireballPrefab = slimeManager.FireballPrefab;
+                    FireballGnPrefab = slimeManager.FireballGnPrefab;
+                    break;
 
                     case 28:
                     slime = SlimeSet.Lightning;

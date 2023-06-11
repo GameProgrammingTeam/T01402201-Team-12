@@ -15,6 +15,8 @@ public class SlimeManager : MonoBehaviour
     [SerializeField] public Attack attackPrefab;
     [SerializeField] public ElectricballGn ElectricballGnPrefab;
     [SerializeField] public Electricball ElectricballPrefab;
+    [SerializeField] public FireballGn FireballGnPrefab;
+    [SerializeField] public Fireball FireballPrefab;
 
 
     [SerializeField] public float moveSpeed;
