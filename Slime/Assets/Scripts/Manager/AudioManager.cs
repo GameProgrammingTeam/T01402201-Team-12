@@ -82,7 +82,7 @@ public class AudioManager : MonoBehaviour
             int ranIndex = 0;
             if (sfx == Sfx.Spark)
             {
-                ranIndex = Random.Range(0, 3);
+                ranIndex = Random.Range(0, 2);
             }
 
             channelIndex = loopIndex;
