@@ -244,6 +244,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 79e6baad2fd414b82a6d49ce1568d2e5, type: 3}
   - {fileID: 8300000, guid: 7377bc936d0afa340826b9d465f30158, type: 3}
   - {fileID: 8300000, guid: 857f91d09fdf6914db9e2b51c0c013b4, type: 3}
+  - {fileID: 8300000, guid: fb16a389be42442458c237ebcb60b507, type: 3}
+  - {fileID: 8300000, guid: 03ee449ebadac854784927778a4dee55, type: 3}
   - {fileID: 8300000, guid: bbfa02778d17f67409c66bdbd3c315e6, type: 3}
   - {fileID: 8300000, guid: b99da9a57308d4ba1bee1cf1d9038376, type: 3}
   sfxVolume: 1
@@ -1653,7 +1655,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &508253874
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3736,7 +3738,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &2141113023
 MonoBehaviour:
   m_ObjectHideFlags: 0

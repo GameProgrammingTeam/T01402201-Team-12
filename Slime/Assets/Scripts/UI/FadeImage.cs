@@ -26,7 +26,7 @@ public class FadeImage : MonoBehaviour
     public IEnumerator FadeOutStart()
     {
         FadePannel.SetActive(true);
-        for (float f = 0f; f < 1f; f += 0.0005f)
+        for (float f = 0f; f < 1f; f += 0.001f)
         {
             Color c = FadePannel.GetComponent<Image>().color;
             c.a = f;

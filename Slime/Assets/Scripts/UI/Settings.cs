@@ -47,7 +47,7 @@ public class Settings : MonoBehaviour
     {
         Time.timeScale = 1;
         AudioManager.instance.PlaySfx(AudioManager.Sfx.Retry);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        Invoke("Loadscene", 1f);
 
     }
 
@@ -59,5 +59,9 @@ public class Settings : MonoBehaviour
         SceneManager.LoadScene("MainTitleScene");
     }
 
+    public void Loadscene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
    
 }
