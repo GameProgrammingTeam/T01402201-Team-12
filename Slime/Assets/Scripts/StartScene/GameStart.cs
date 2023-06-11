@@ -23,6 +23,7 @@ public class GameStart : MonoBehaviour
         {
             AudioManager.instance.PlaySfx(AudioManager.Sfx.Gamestart);
             Invoke("InputGameStart", 4.5f);
+            AudioManager.instance.PlayBgm(false);
             gameObject.GetComponent<FadeImage>().StartCoroutine("FadeOutStart");
         };
        

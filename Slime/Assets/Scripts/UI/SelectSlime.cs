@@ -30,6 +30,7 @@ public class SelectSlime : MonoBehaviour
         {
             case SlimeSet.Blue:
                 slimeManager.PlayerID = 0;
+                AudioManager.instance.PlayBgm(true);
                 Slime.GetComponent<Slime>().CreateAttacker();
                 break;
             case SlimeSet.Fire:
@@ -37,6 +38,7 @@ public class SelectSlime : MonoBehaviour
                 break;
             case SlimeSet.Lightning:
                 slimeManager.PlayerID = 28;
+                AudioManager.instance.PlayBgm(true);
                 Slime.GetComponent<Slime>().CreateElectricballGn();
 
                 break;

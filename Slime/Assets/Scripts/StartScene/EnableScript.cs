@@ -9,6 +9,7 @@ public class EnableScript : MonoBehaviour
     void Start()
     {
         MainCamera = GetComponent<CameraMoveToObject>();
+        AudioManager.instance.PlayBgm(true);
     }
 
     // Update is called once per frame

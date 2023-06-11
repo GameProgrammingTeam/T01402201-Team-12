@@ -32,6 +32,7 @@ public class Settings : MonoBehaviour
     {
         gameObject.SetActive(true);
         Time.timeScale = 0; // 설정창 열람시 게임시간 멈춤
+        AudioManager.instance.PlaySfx(AudioManager.Sfx.Click3);
 
     }
 
@@ -39,18 +40,22 @@ public class Settings : MonoBehaviour
     {
         gameObject.SetActive(false);
         Time.timeScale = 1;
+        AudioManager.instance.PlaySfx(AudioManager.Sfx.Click1);
     }
 
     public void ClickRestart()
     {
         Time.timeScale = 1;
+        AudioManager.instance.PlaySfx(AudioManager.Sfx.Retry);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+
     }
 
 
     public void ClickQuit()
     {
         Time.timeScale = 1;
+        AudioManager.instance.PlaySfx(AudioManager.Sfx.Quite);
         SceneManager.LoadScene("MainTitleScene");
     }
 

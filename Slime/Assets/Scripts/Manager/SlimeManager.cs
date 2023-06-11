@@ -134,6 +134,8 @@ public class SlimeManager : MonoBehaviour
             health = 0;
             moveSpeed = 0;
             Gameover.gameObject.SetActive(true);
+            AudioManager.instance.PlayBgm(false);
+            AudioManager.instance.PlaySfx(AudioManager.Sfx.Gameover);
         }
 
         if (health >= maxHealth)
@@ -144,6 +146,7 @@ public class SlimeManager : MonoBehaviour
 
     public void AddExp(int value)
     {
+        AudioManager.instance.PlaySfx(AudioManager.Sfx.Getgell);
         exp += value;
         score++;
 
@@ -163,6 +166,7 @@ public class SlimeManager : MonoBehaviour
 
     public void AddMiniSlime(Transform transform)
     {
+        AudioManager.instance.PlaySfx(AudioManager.Sfx.Getpet);
         if (!hasMiniSlime)
         {
             hasMiniSlime = true;
@@ -185,10 +189,13 @@ public class SlimeManager : MonoBehaviour
 
     public void LevelUp()
     {
+        AudioManager.instance.PlaySfx(AudioManager.Sfx.Lvup);
+        AudioManager.instance.EffectBgm(true);
         ShuffleSet();
         SetLevelUpUI();
         Time.timeScale = 0;
         levelUpPanel.gameObject.SetActive(true);
+        
     }
 
     public void ChoiceStatus01()
@@ -213,6 +220,8 @@ public class SlimeManager : MonoBehaviour
     {
         levelUpPanel.SetActive(false);
         Time.timeScale = 1;
+        AudioManager.instance.PlaySfx(AudioManager.Sfx.LvSelect);
+        AudioManager.instance.EffectBgm(false);
     }
 
     public void SetLevelUpUI()

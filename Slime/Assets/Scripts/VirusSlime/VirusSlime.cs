@@ -60,6 +60,9 @@ public class VirusSlime : MonoBehaviour
             Vector3 pos = Camera.main.WorldToScreenPoint(other.transform.position);
             DamageTextController.Instance.CreateDamageText(pos, damage);
             GameObject effect = Instantiate(impactEffectPrefab, transform.position, Quaternion.identity);
+
+            AudioManager.instance.PlaySfx(AudioManager.Sfx.Attackpop);
+
             Destroy(effect, 1f);
 
 
@@ -82,7 +85,12 @@ public class VirusSlime : MonoBehaviour
             Vector3 pos = Camera.main.WorldToScreenPoint(other.transform.position);
             DamageTextController.Instance.CreateDamageText(pos, damage);
             GameObject effect = Instantiate(ElectricballHitPrefab, transform.position, Quaternion.identity);
+
+            
+            AudioManager.instance.PlaySfx(AudioManager.Sfx.Spark);
+
             Destroy(effect, 1f);
+
             if (health <= 0)
             {
                 CreateJelly();
